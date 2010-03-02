@@ -19,6 +19,7 @@ int main(int argc, char** argv) {
 
     typedef double element;
 
+    
     //element myints[] = {-31e2, 2, 77, 29.14};
     //vector<element> v(myints, myints + sizeof (myints) / sizeof (element));
     vector<element> v;
