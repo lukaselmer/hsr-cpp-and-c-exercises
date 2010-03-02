@@ -23,11 +23,12 @@ namespace {
 //   runSuite();
 
 int main() {
-    std::string s = "Hello world 1";
-    size_t pos = s.find(' ');
-    if (pos != std::string::npos)
-        std::cout << s.substr(pos + 1, 2) << std::endl;
-    else
-        std::cout << "Not two words!" << std::endl;
-    return 0;
+    runSuite();
+    //    std::string s = "Hello world 1";
+    //    size_t pos = s.find(' ');
+    //    if (pos != std::string::npos)
+    //        std::cout << s.substr(pos + 1, 2) << std::endl;
+    //    else
+    //        std::cout << "Not two words!" << std::endl;
+    //    return 0;
 }
