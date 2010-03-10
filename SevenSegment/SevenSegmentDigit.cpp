@@ -39,15 +39,15 @@ vector<string> SevenSegmentDigit::getStringVector(int scale) {
     vector<string> v;
     int a = 0, b = 1, c = 2, d = 3, e = 4, f = 5, g = 6;
     // Top line
-    v += getHorizontal(ii[a], scale);
+    addHorizontal(ii[a], scale, v);
     // First vertical
-    v += getVertical(ii[f], ii[b], scale);
+    addVertical(ii[f], ii[b], scale, v);
     // Middle Line
-    v += getHorizontal(ii[g], scale);
+    addHorizontal(ii[g], scale, v);
     //Second vertical
-    v += getVertical(ii[c], ii[e], scale);
+    addVertical(ii[c], ii[e], scale, v);
     // Bottom Line
-    v += getHorizontal(ii[d], scale);
+    addHorizontal(ii[d], scale, v);
     return v;
 }
 
@@ -88,11 +88,22 @@ vector<bool> SevenSegmentDigit::getBoolVector() {
     return ii;
 }
 
-string SevenSegmentDigit::getHorizontal(bool draw_line, int scale) {
-    return draw_line ? " - " : "   ";
+string SevenSegmentDigit::addHorizontal(bool draw_line, int scale, vector<string>& v) {
+    string s;
+    s += " ", repeat(scale, (draw_line ? "-" : " ")), " ";
+    for (int i = 0; i < scale; ++i) {
+        v += s;
+    }
 }
 
-string SevenSegmentDigit::getVertical(bool left, bool right, int scale) {
+string SevenSegmentDigit::addVertical(bool left, bool right, int scale, vector<string>& v) {
+    string s = getVertical(left, right);
+    for (int i = 0; i < scale; ++i) {
+        v += s;
+    }
+}
+
+string SevenSegmentDigit::getVertical(bool left, bool right) {
     if (left && right) {
         return "| |";
     } else if (right) {

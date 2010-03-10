@@ -18,8 +18,9 @@ public:
 private:
     int digit;
     std::vector<bool> getBoolVector();
-    std::string getHorizontal(bool, int);
-    std::string getVertical(bool, bool, int);
+    std::string addHorizontal(bool, int, std::vector<std::string>&);
+    std::string addVertical(bool, bool, int, std::vector<std::string>&);
+    std::string getVertical(bool, bool);
 };
 
 #endif	/* _SEVENSEGMENTDIGIT_H */
