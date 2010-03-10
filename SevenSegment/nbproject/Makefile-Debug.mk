@@ -33,7 +33,7 @@ OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/SevenSegmentDigit.o \
 	${OBJECTDIR}/SevenSegmentLine.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/Main.o
 
 # C Compiler Flags
 CFLAGS=
@@ -69,10 +69,10 @@ ${OBJECTDIR}/SevenSegmentLine.o: nbproject/Makefile-${CND_CONF}.mk SevenSegmentL
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/SevenSegmentLine.o SevenSegmentLine.cpp
 
-${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.cpp 
+${OBJECTDIR}/Main.o: nbproject/Makefile-${CND_CONF}.mk Main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Main.o Main.cpp
 
 # Subprojects
 .build-subprojects:
