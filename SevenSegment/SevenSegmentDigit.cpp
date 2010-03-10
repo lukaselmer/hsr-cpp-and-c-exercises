@@ -65,7 +65,7 @@ void SevenSegmentDigit::addVertical(bool left, bool right, int scale, vector<str
 }
 
 vector<bool> SevenSegmentDigit::getBoolVector() {
-    vector<bool> ii; // this is an array of (A,B,C,D,E,F,G), see http://upload.wikimedia.org/wikipedia/commons/0/02/7_segment_display_labeled.svg
+    vector<bool> ii; // array of (A,B,C,D,E,F,G), see http://upload.wikimedia.org/wikipedia/commons/0/02/7_segment_display_labeled.svg
     switch (digit) {
         case 0:
             ii += true, true, true, true, true, true, false;

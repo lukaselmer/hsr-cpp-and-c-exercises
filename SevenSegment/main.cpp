@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
     l.print(2);
     l = SevenSegmentLine("123");
     l.print();
-    l = SevenSegmentLine("079 313 02 92");
+    l = SevenSegmentLine("079 666 55 77");
     l.print(3);
     l = SevenSegmentLine("0987654321");
     l.print(2);
@@ -26,4 +26,3 @@ int main(int argc, char** argv) {
 
     return (EXIT_SUCCESS);
 }
-

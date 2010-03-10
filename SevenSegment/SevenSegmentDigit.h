@@ -8,6 +8,7 @@
 #ifndef _SEVENSEGMENTDIGIT_H
 #define	_SEVENSEGMENTDIGIT_H
 
+#include <iosfwd>
 #include <vector>
 #include <string>
 
@@ -23,4 +24,3 @@ private:
 };
 
 #endif	/* _SEVENSEGMENTDIGIT_H */
-

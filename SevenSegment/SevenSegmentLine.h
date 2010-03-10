@@ -20,4 +20,3 @@ private:
 };
 
 #endif	/* _SEVENSEGMENTLINE_H */
-

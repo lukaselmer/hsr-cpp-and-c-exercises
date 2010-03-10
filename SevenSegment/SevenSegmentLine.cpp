@@ -22,9 +22,12 @@ SevenSegmentLine::SevenSegmentLine(string s) {
     this->digits = vector<SevenSegmentDigit > ();
     for (string::iterator it = s.begin(); it != s.end(); ++it) {
         try {
-            this->digits += SevenSegmentDigit(boost::lexical_cast< int >(*it));
+            if (*it == ' ')
+                this->digits += SevenSegmentDigit(-1);
+            else
+                this->digits += SevenSegmentDigit(boost::lexical_cast< int >(*it));
         } catch (const boost::bad_lexical_cast &) {
-            this->digits += SevenSegmentDigit(-1);
+            throw "Illegal input string";
         }
     }
 }
@@ -34,30 +37,20 @@ void SevenSegmentLine::print() {
 }
 
 void SevenSegmentLine::print(const int scale) {
-    cout << endl;
-    if (scale <= 0) {
-        throw "Illegal scale";
-    }
-    if (digits.size() <= 0) {
-        cout << "No digits given" << endl;
-        return;
-    }
-    vector<string> all(3 + (scale * 2), "");
+    if (scale <= 0)
+        throw "Scale must be >= 1";
+    if (digits.size() <= 0)
+        throw "No digits given";
 
+    vector<string> all((scale * 2) + 3, ""); // Three horizonal lines and (scale)-times the vertical lines
     for (vector<SevenSegmentDigit>::const_iterator i = digits.begin(); i != digits.end(); ++i) {
-        SevenSegmentDigit s = *i;
-        vector<string> v = s.getStringVector(scale);
-        //copy(v.begin(), v.end(), ostream_iterator<string > (cout, "\n"));
-        //cout << endl << endl;
-
+        const vector<string> v = ((SevenSegmentDigit) * i).getStringVector(scale);
         for (int k = 0; k < v.size(); ++k) {
             all[k] += " " + v[k];
         }
     }
 
+    cout << endl;
     copy(all.begin(), all.end(), ostream_iterator<string > (cout, "\n"));
     cout << endl;
 }
-
-
-
