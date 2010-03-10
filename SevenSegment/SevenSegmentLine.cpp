@@ -18,9 +18,19 @@
 using namespace std;
 using namespace boost::assign;
 
-SevenSegmentLine::SevenSegmentLine(string s) {
+SevenSegmentLine::SevenSegmentLine(int inputNum) {
+    if (inputNum < 0)
+        throw "Inupt number must be >= 0";
+    init(boost::lexical_cast< string > (inputNum));
+}
+
+SevenSegmentLine::SevenSegmentLine(string inputString) {
+    init(inputString);
+}
+
+void SevenSegmentLine::init(string inputString) {
     this->digits = vector<SevenSegmentDigit > ();
-    for (string::iterator it = s.begin(); it != s.end(); ++it) {
+    for (string::iterator it = inputString.begin(); it != inputString.end(); ++it) {
         try {
             if (*it == ' ')
                 this->digits += SevenSegmentDigit(-1);
