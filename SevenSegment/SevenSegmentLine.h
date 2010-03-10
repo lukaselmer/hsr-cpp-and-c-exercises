@@ -9,6 +9,7 @@
 #define	_SEVENSEGMENTLINE_H
 
 #include "SevenSegmentDigit.h"
+#include <iosfwd>
 
 class SevenSegmentLine {
 public:

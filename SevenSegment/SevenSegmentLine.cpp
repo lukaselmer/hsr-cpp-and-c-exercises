@@ -14,7 +14,6 @@
 #include "SevenSegmentLine.h"
 #include "SevenSegmentDigit.h"
 
-
 using namespace std;
 using namespace boost::assign;
 
