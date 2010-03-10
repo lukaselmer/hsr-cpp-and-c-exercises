@@ -20,28 +20,13 @@ using namespace boost::assign;
 
 SevenSegmentLine::SevenSegmentLine(string s) {
     this->digits = vector<SevenSegmentDigit > ();
-
-
-
-
-    try {
-        std::string str = "123";
-        int number = boost::lexical_cast< int >(str);
-    } catch (const boost::bad_lexical_cast &) {
-        throw "Invalid input";
+    for (string::iterator it = s.begin(); it != s.end(); ++it) {
+        try {
+            this->digits += SevenSegmentDigit(boost::lexical_cast< int >(*it));
+        } catch (const boost::bad_lexical_cast &) {
+            this->digits += SevenSegmentDigit(-1);
+        }
     }
-
-    this->digits +=
-            SevenSegmentDigit(0),
-            SevenSegmentDigit(1),
-            SevenSegmentDigit(2),
-            SevenSegmentDigit(3),
-            SevenSegmentDigit(4),
-            SevenSegmentDigit(5),
-            SevenSegmentDigit(6),
-            SevenSegmentDigit(7),
-            SevenSegmentDigit(8),
-            SevenSegmentDigit(9);
 }
 
 void SevenSegmentLine::print() {
@@ -57,8 +42,6 @@ void SevenSegmentLine::print(const int scale) {
         cout << "No digits given" << endl;
         return;
     }
-    //copy(digits.begin(), digits.end(), ostream_iterator<SevenSegmentDigit > (cout, "\n"));
-
     vector<string> all(3 + (scale * 2), "");
 
     for (vector<SevenSegmentDigit>::const_iterator i = digits.begin(); i != digits.end(); ++i) {
@@ -67,10 +50,11 @@ void SevenSegmentLine::print(const int scale) {
         //copy(v.begin(), v.end(), ostream_iterator<string > (cout, "\n"));
         //cout << endl << endl;
 
-        for (int k = 0; k < v.size(); k++) {
-            all[k] += v[k];
+        for (int k = 0; k < v.size(); ++k) {
+            all[k] += " " + v[k];
         }
     }
+
     copy(all.begin(), all.end(), ostream_iterator<string > (cout, "\n"));
     cout << endl;
 }

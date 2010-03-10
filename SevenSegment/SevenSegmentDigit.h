@@ -20,7 +20,6 @@ private:
     std::vector<bool> getBoolVector();
     void addHorizontal(bool, int, std::vector<std::string>&);
     void addVertical(bool, bool, int, std::vector<std::string>&);
-    std::string getVertical(bool, bool, int);
 };
 
 #endif	/* _SEVENSEGMENTDIGIT_H */

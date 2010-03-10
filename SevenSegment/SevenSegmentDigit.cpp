@@ -16,7 +16,7 @@ using namespace std;
 using namespace boost::assign;
 
 SevenSegmentDigit::SevenSegmentDigit(int digit) {
-    if (digit > 9 || digit < 0) {
+    if (digit > 9 || digit < -1) {
         throw "Illegal input. Digit must be [0-9]";
     }
     this->digit = digit;
@@ -31,6 +31,7 @@ SevenSegmentDigit::SevenSegmentDigit(int digit) {
  * E C        |_|
  *  D
  * Example: for nr. 8 is each letter (A,B,C,D,E,F,G) true
+ * For -1 a space will be printed
  **/
 vector<string> SevenSegmentDigit::getStringVector(int scale) {
     if (scale <= 0) {
@@ -53,48 +54,18 @@ vector<string> SevenSegmentDigit::getStringVector(int scale) {
 }
 
 void SevenSegmentDigit::addHorizontal(bool draw_line, int scale, vector<string>& v) {
-    //string s = (draw_line ? " - " : " ");
-    string s = " ";
-    s += string(scale, (draw_line ? '-' : ' '));
-    s += " ";
-    v += s;
-    //s += " a", "b ";
-    //for (int i = 0; i < scale; ++i) {
-    //}
+    v += " " + string(scale, (draw_line ? '-' : ' ')) + " ";
 }
 
 void SevenSegmentDigit::addVertical(bool left, bool right, int scale, vector<string>& v) {
-    string s = getVertical(left, right, scale);
+    string s = (left ? '|' : ' ') + string(scale, ' ') + (right ? '|' : ' ');
     for (int i = 0; i < scale; ++i) {
         v += s;
     }
 }
 
-string SevenSegmentDigit::getVertical(bool left, bool right, int scale) {
-    string spaces = string(scale, ' ');
-    string s;
-    if (left && right) {
-        s = "|";
-        s += spaces;
-        s += "|";
-        return s;
-    } else if (right) {
-        s = " ";
-        s += spaces;
-        s += "|";
-        return s;
-    } else if (left) {
-        s = "|";
-        s += spaces;
-        s += " ";
-        return s;
-    } else {
-        throw "Illegal state";
-    }
-}
-
 vector<bool> SevenSegmentDigit::getBoolVector() {
-    vector<bool> ii; // this is an array of (A,B,C,D,E,F,G)
+    vector<bool> ii; // this is an array of (A,B,C,D,E,F,G), see http://upload.wikimedia.org/wikipedia/commons/0/02/7_segment_display_labeled.svg
     switch (digit) {
         case 0:
             ii += true, true, true, true, true, true, false;
@@ -126,6 +97,11 @@ vector<bool> SevenSegmentDigit::getBoolVector() {
         case 9:
             ii += true, true, true, true, false, true, true;
             break;
+        case -1:
+            ii += false, false, false, false, false, false, false;
+            break;
+        default:
+            throw "Illegal input";
     }
     return ii;
 }
