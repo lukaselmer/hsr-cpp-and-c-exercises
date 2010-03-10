@@ -14,9 +14,10 @@
 class SevenSegmentDigit {
 public:
     SevenSegmentDigit(int);
-    std::vector<std::string> getStringVector();
+    std::vector<std::string> getStringVector(int);
 private:
     int digit;
+    std::vector<bool> getBoolVector();
     std::string getHorizontal(bool, int);
     std::string getVertical(bool, bool, int);
 };

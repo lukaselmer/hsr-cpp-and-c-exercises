@@ -23,17 +23,35 @@ SevenSegmentDigit::SevenSegmentDigit(int digit) {
 
 /**
  * Source: http://upload.wikimedia.org/wikipedia/commons/0/02/7_segment_display_labeled.svg
- *
  * Each Digit looks like this:
  *  A
  * F B         _
  *  G      =  |_|
  * E C        |_|
  *  D
- *
  * Example: for nr. 8 is each letter (A,B,C,D,E,F,G) true
  **/
 vector<string> SevenSegmentDigit::getStringVector(int scale) {
+    if (scale <= 0) {
+        throw "Scale must be >= 1!";
+    }
+    vector<bool> ii = getBoolVector();
+    vector<string> v;
+    int a = 0, b = 1, c = 2, d = 3, e = 4, f = 5, g = 6;
+    // Top line
+    v += getHorizontal(ii[a], scale);
+    // First vertical
+    v += getVertical(ii[f], ii[b], scale);
+    // Middle Line
+    v += getHorizontal(ii[g], scale);
+    //Second vertical
+    v += getVertical(ii[c], ii[e], scale);
+    // Bottom Line
+    v += getHorizontal(ii[d], scale);
+    return v;
+}
+
+vector<bool> SevenSegmentDigit::getBoolVector() {
     vector<bool> ii; // this is an array of (A,B,C,D,E,F,G)
     switch (digit) {
         case 0:
@@ -67,53 +85,22 @@ vector<string> SevenSegmentDigit::getStringVector(int scale) {
             ii += true, true, true, true, false, true, true;
             break;
     }
-    vector<string> v;
-    int a = 0;
-    int b = 1;
-    int c = 2;
-    int d = 3;
-    int e = 4;
-    int f = 5;
-    int g = 6;
-    // Top line
-    v += digit[a] ? " - " : "   ";
+    return ii;
+}
 
-    // First vertical
-    if (digit[b] && digit[f]) {
-        v += "| |";
-    } else if (digit[b]) {
-        v += "  |";
-    } else if (digit[f]) {
-        v += "|  ";
+string SevenSegmentDigit::getHorizontal(bool draw_line, int scale) {
+    return draw_line ? " - " : "   ";
+}
+
+string SevenSegmentDigit::getVertical(bool left, bool right, int scale) {
+    if (left && right) {
+        return "| |";
+    } else if (right) {
+        return "  |";
+    } else if (left) {
+        return "|  ";
     } else {
         throw "Illegal state";
     }
-
-    // Middle Line
-    v += digit[g] ? " - " : "   ";
-
-    //Second vertical
-    if (digit[c] && digit[e]) {
-        v += "| |";
-    } else if (digit[c]) {
-        v += "  |";
-    } else if (digit[e]) {
-        v += "|  ";
-    } else {
-        throw "Illegal state";
-    }
-
-    // Bottom Line
-    v += digit[d] ? " - " : "   ";
-
-    return v;
-}
-
-string SevenSegmentDigit::getHorizontal(bool val, int scale) {
-
-}
-
-string SevenSegmentDigit::getVertical(bool, bool, int scale) {
-
 }
 
