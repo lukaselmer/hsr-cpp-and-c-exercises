@@ -10,6 +10,7 @@
 #include <boost/assert.hpp>
 #include <vector>
 #include <string>
+#include <iostream>
 
 using namespace std;
 using namespace boost::assign;
@@ -45,10 +46,51 @@ vector<string> SevenSegmentDigit::getStringVector(int scale) {
     // Middle Line
     addHorizontal(ii[g], scale, v);
     //Second vertical
-    addVertical(ii[c], ii[e], scale, v);
+    addVertical(ii[e], ii[c], scale, v);
     // Bottom Line
     addHorizontal(ii[d], scale, v);
     return v;
+}
+
+void SevenSegmentDigit::addHorizontal(bool draw_line, int scale, vector<string>& v) {
+    //string s = (draw_line ? " - " : " ");
+    string s = " ";
+    s += string(scale, (draw_line ? '-' : ' '));
+    s += " ";
+    v += s;
+    //s += " a", "b ";
+    //for (int i = 0; i < scale; ++i) {
+    //}
+}
+
+void SevenSegmentDigit::addVertical(bool left, bool right, int scale, vector<string>& v) {
+    string s = getVertical(left, right, scale);
+    for (int i = 0; i < scale; ++i) {
+        v += s;
+    }
+}
+
+string SevenSegmentDigit::getVertical(bool left, bool right, int scale) {
+    string spaces = string(scale, ' ');
+    string s;
+    if (left && right) {
+        s = "|";
+        s += spaces;
+        s += "|";
+        return s;
+    } else if (right) {
+        s = " ";
+        s += spaces;
+        s += "|";
+        return s;
+    } else if (left) {
+        s = "|";
+        s += spaces;
+        s += " ";
+        return s;
+    } else {
+        throw "Illegal state";
+    }
 }
 
 vector<bool> SevenSegmentDigit::getBoolVector() {
@@ -87,31 +129,3 @@ vector<bool> SevenSegmentDigit::getBoolVector() {
     }
     return ii;
 }
-
-string SevenSegmentDigit::addHorizontal(bool draw_line, int scale, vector<string>& v) {
-    string s;
-    s += " ", repeat(scale, (draw_line ? "-" : " ")), " ";
-    for (int i = 0; i < scale; ++i) {
-        v += s;
-    }
-}
-
-string SevenSegmentDigit::addVertical(bool left, bool right, int scale, vector<string>& v) {
-    string s = getVertical(left, right);
-    for (int i = 0; i < scale; ++i) {
-        v += s;
-    }
-}
-
-string SevenSegmentDigit::getVertical(bool left, bool right) {
-    if (left && right) {
-        return "| |";
-    } else if (right) {
-        return "  |";
-    } else if (left) {
-        return "|  ";
-    } else {
-        throw "Illegal state";
-    }
-}
-

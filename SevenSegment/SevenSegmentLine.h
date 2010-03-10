@@ -8,13 +8,15 @@
 #ifndef _SEVENSEGMENTLINE_H
 #define	_SEVENSEGMENTLINE_H
 
+#include "SevenSegmentDigit.h"
+
 class SevenSegmentLine {
 public:
-    SevenSegmentLine();
-    SevenSegmentLine(const SevenSegmentLine& orig);
-    virtual ~SevenSegmentLine();
+    SevenSegmentLine(std::string);
+    void print();
+    void print(int);
 private:
-
+    std::vector<SevenSegmentDigit> digits;
 };
 
 #endif	/* _SEVENSEGMENTLINE_H */
