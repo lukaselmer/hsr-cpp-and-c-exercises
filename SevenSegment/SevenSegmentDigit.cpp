@@ -5,7 +5,7 @@
  * Created on 10. März 2010, 12:45
  */
 #include "SevenSegmentDigit.h"
-#include <boost/assign/std/vector.hpp> // for 'operator+=()'
+#include <boost/assign/std/vector.hpp>
 #include <boost/assert.hpp>
 #include <vector>
 #include <string>

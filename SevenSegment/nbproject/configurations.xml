@@ -22,21 +22,19 @@
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>Main.cpp</itemPath>
+    <itemPath>MainSeven.cpp</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="Debug" type="1">
+    <conf name="Debug" type="3">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
         <compilerSet>MinGW|MinGW</compilerSet>
         <platform>3</platform>
       </toolsSet>
       <compileType>
-        <linkerTool>
-          <linkerLibItems>
-          </linkerLibItems>
-        </linkerTool>
+        <archiverTool>
+        </archiverTool>
       </compileType>
     </conf>
     <conf name="Release" type="1">

@@ -9,6 +9,7 @@
 #include "SevenSegmentLine.h"
 #include <stdlib.h>
 
+/*
 int main(int argc, char** argv) {
     SevenSegmentLine l("784");
     l.print(5);
@@ -23,3 +24,4 @@ int main(int argc, char** argv) {
     l.print(6);
     return (EXIT_SUCCESS);
 }
+*/

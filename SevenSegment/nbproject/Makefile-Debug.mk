@@ -31,9 +31,9 @@ OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/MainSeven.o \
 	${OBJECTDIR}/SevenSegmentDigit.o \
-	${OBJECTDIR}/SevenSegmentLine.o \
-	${OBJECTDIR}/Main.o
+	${OBJECTDIR}/SevenSegmentLine.o
 
 # C Compiler Flags
 CFLAGS=
@@ -53,11 +53,18 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/MinGW-Windows/sevensegment.exe
+	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/MinGW-Windows/libsevensegment.a
 
-dist/Debug/MinGW-Windows/sevensegment.exe: ${OBJECTFILES}
+dist/Debug/MinGW-Windows/libsevensegment.a: ${OBJECTFILES}
 	${MKDIR} -p dist/Debug/MinGW-Windows
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sevensegment ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${RM} dist/Debug/MinGW-Windows/libsevensegment.a
+	${AR} rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsevensegment.a ${OBJECTFILES} 
+	$(RANLIB) dist/Debug/MinGW-Windows/libsevensegment.a
+
+${OBJECTDIR}/MainSeven.o: nbproject/Makefile-${CND_CONF}.mk MainSeven.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/MainSeven.o MainSeven.cpp
 
 ${OBJECTDIR}/SevenSegmentDigit.o: nbproject/Makefile-${CND_CONF}.mk SevenSegmentDigit.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -69,18 +76,13 @@ ${OBJECTDIR}/SevenSegmentLine.o: nbproject/Makefile-${CND_CONF}.mk SevenSegmentL
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/SevenSegmentLine.o SevenSegmentLine.cpp
 
-${OBJECTDIR}/Main.o: nbproject/Makefile-${CND_CONF}.mk Main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Main.o Main.cpp
-
 # Subprojects
 .build-subprojects:
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r build/Debug
-	${RM} dist/Debug/MinGW-Windows/sevensegment.exe
+	${RM} dist/Debug/MinGW-Windows/libsevensegment.a
 
 # Subprojects
 .clean-subprojects:

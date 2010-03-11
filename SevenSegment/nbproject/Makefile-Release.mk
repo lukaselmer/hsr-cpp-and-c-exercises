@@ -31,9 +31,9 @@ OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/MainSeven.o \
 	${OBJECTDIR}/SevenSegmentDigit.o \
-	${OBJECTDIR}/SevenSegmentLine.o \
-	${OBJECTDIR}/Main.o
+	${OBJECTDIR}/SevenSegmentLine.o
 
 # C Compiler Flags
 CFLAGS=
@@ -59,6 +59,11 @@ dist/Release/MinGW-Windows/sevensegment.exe: ${OBJECTFILES}
 	${MKDIR} -p dist/Release/MinGW-Windows
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sevensegment ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
+${OBJECTDIR}/MainSeven.o: nbproject/Makefile-${CND_CONF}.mk MainSeven.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/MainSeven.o MainSeven.cpp
+
 ${OBJECTDIR}/SevenSegmentDigit.o: nbproject/Makefile-${CND_CONF}.mk SevenSegmentDigit.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -68,11 +73,6 @@ ${OBJECTDIR}/SevenSegmentLine.o: nbproject/Makefile-${CND_CONF}.mk SevenSegmentL
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/SevenSegmentLine.o SevenSegmentLine.cpp
-
-${OBJECTDIR}/Main.o: nbproject/Makefile-${CND_CONF}.mk Main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Main.o Main.cpp
 
 # Subprojects
 .build-subprojects:
