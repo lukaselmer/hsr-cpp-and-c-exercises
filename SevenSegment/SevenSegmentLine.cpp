@@ -1,10 +1,3 @@
-/* 
- * File:   SevenSegmentLine.cpp
- * Author: Lukas Elmer
- * 
- * Created on 10. März 2010, 12:46
- */
-
 #include <boost/lexical_cast.hpp>
 #include <boost/assign/std/vector.hpp> // for 'operator+=()'
 #include <boost/assert.hpp>

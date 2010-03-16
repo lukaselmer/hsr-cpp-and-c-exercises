@@ -1,9 +1,3 @@
-/* 
- * File:   SevenSegmentDigit.cpp
- * Author: Lukas Elmer
- * 
- * Created on 10. März 2010, 12:45
- */
 #include "SevenSegmentDigit.h"
 
 using namespace std;

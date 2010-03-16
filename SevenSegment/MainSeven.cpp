@@ -1,10 +1,3 @@
-/*
- * File:   main.cpp
- * Author: Lukas Elmer
- *
- * Created on 10. März 2010, 11:25
- */
-
 //#include "SevenSegmentDigit.h"
 //#include "SevenSegmentLine.h"
 //#include <stdlib.h>

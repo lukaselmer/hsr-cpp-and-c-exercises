@@ -1,10 +1,3 @@
-/* 
- * File:   SevenSegmentDigit.h
- * Author: Lukas Elmer
- *
- * Created on 10. März 2010, 12:45
- */
-
 #ifndef _SEVENSEGMENTDIGIT_H
 #define	_SEVENSEGMENTDIGIT_H
 

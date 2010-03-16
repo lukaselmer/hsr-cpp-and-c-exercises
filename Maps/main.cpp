@@ -1,10 +1,3 @@
-/* 
- * File:   main.cpp
- * Author: Lukas Elmer
- *
- * Created on 16. März 2010, 08:49
- */
-
 #include <set>
 #include <map>
 #include <boost/assign.hpp>
