@@ -1,16 +1,30 @@
+#define Ob(x)  ((unsigned)Ob_(0 ## x ## uL))
+#define Ob_(x) (x & 1 | x >> 2 & 2 | x >> 4 & 4 | x >> 6 & 8 | x >> 8 & 16 | x >> 10 & 32 | x >> 12 & 64 | x >> 14 & 128)
+
 #include "SevenSegmentDigit.h"
+#include <iostream>
+#include <boost/assign/list_of.hpp>
+#include <boost/assign/std/vector.hpp>
 
 using namespace std;
 using namespace boost::assign;
 
-
-SevenSegmentDigit::mapType SevenSegmentDigit::digitsMap;
-bool b = SevenSegmentDigit::defineDigitsMap();
+SevenSegmentDigit::mapType SevenSegmentDigit::digitsMap = map_list_of(0, Ob(00111111))
+(1, Ob(00000110))(2, Ob(01011011))(3, Ob(01001111))(4, Ob(01100110))(5, Ob(01101101))
+(6, Ob(01111101))(7, Ob(00000111))(8, Ob(01111111))(9, Ob(01101111))(-1, Ob(01000000));
 
 SevenSegmentDigit::SevenSegmentDigit(int d) : digit(d) {
-    if (digit > 9 || digit < -1) {
+    if (digit > 9 || digit < -1)
         throw "Illegal input. Digit must be [0-9]";
-    }
+    this->initBinaryDigit();
+}
+
+void SevenSegmentDigit::initBinaryDigit() {
+    mapType::iterator ditigIt = digitsMap.find(digit);
+    if (ditigIt != digitsMap.end())
+        binaryDigit = ditigIt->second;
+    else
+        throw "Illegal input";
 }
 
 /**
@@ -22,25 +36,19 @@ SevenSegmentDigit::SevenSegmentDigit(int d) : digit(d) {
  * E C        |_|
  *  D
  * Example: for nr. 8 is each letter (A,B,C,D,E,F,G) true
- * For -1 a space will be printed
+ * For -1, '-' will be printed
  **/
 vector<string> SevenSegmentDigit::getStringVector(int scale) {
-    if (scale <= 0) {
+    if (scale <= 0)
         throw "Scale must be >= 1!";
-    }
-    vector<bool> ii = getBoolVector();
+    bool a = (binaryDigit & 1) > 0, b = (binaryDigit & 2) > 0, c = (binaryDigit & 4) > 0, d = (binaryDigit & 8) > 0,
+            e = (binaryDigit & 16) > 0, f = (binaryDigit & 32) > 0, g = (binaryDigit & 64) > 0;
     vector<string> v;
-    int a = 0, b = 1, c = 2, d = 3, e = 4, f = 5, g = 6;
-    // Top line
-    addHorizontal(ii[a], scale, v);
-    // First vertical
-    addVertical(ii[f], ii[b], scale, v);
-    // Middle Line
-    addHorizontal(ii[g], scale, v);
-    //Second vertical
-    addVertical(ii[e], ii[c], scale, v);
-    // Bottom Line
-    addHorizontal(ii[d], scale, v);
+    addHorizontal(a, scale, v);
+    addVertical(f, b, scale, v);
+    addHorizontal(g, scale, v);
+    addVertical(e, c, scale, v);
+    addHorizontal(d, scale, v);
     return v;
 }
 
@@ -50,17 +58,6 @@ void SevenSegmentDigit::addHorizontal(bool draw_line, int scale, vector<string>&
 
 void SevenSegmentDigit::addVertical(bool left, bool right, int scale, vector<string>& v) {
     string s = (left ? '|' : ' ') + string(scale, ' ') + (right ? '|' : ' ');
-    for (int i = 0; i < scale; ++i) {
+    for (int i = 0; i < scale; ++i)
         v += s;
-    }
-}
-
-vector<bool> SevenSegmentDigit::getBoolVector() {
-    mapType::iterator ditigIt;
-    ditigIt = digitsMap.find(digit);
-    if (ditigIt != digitsMap.end()) {
-        return ditigIt->second;
-    } else {
-        throw "Illegal input";
-    }
 }

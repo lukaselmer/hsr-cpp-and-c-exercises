@@ -1,22 +1,21 @@
+#include "SevenSegmentLine.h"
+#include "SevenSegmentDigit.h"
 #include <boost/lexical_cast.hpp>
-#include <boost/assign/std/vector.hpp> // for 'operator+=()'
-#include <boost/assert.hpp>
+#include <boost/assign/std/vector.hpp>
 #include <vector>
 #include <string>
 #include <iostream>
-#include "SevenSegmentLine.h"
-#include "SevenSegmentDigit.h"
 
 using namespace std;
 using namespace boost::assign;
 
-SevenSegmentLine::SevenSegmentLine(int inputNum) {
+SevenSegmentLine::SevenSegmentLine(const int inputNum) {
     if (inputNum < 0)
         throw "Inupt number must be >= 0";
     init(boost::lexical_cast< string > (inputNum));
 }
 
-SevenSegmentLine::SevenSegmentLine(string inputString) {
+SevenSegmentLine::SevenSegmentLine(const string inputString) {
     init(inputString);
 }
 
@@ -38,7 +37,7 @@ void SevenSegmentLine::print() {
     print(1, cout);
 }
 
-void SevenSegmentLine::print(const int scale) {
+void SevenSegmentLine::print(const int scale = 1) {
     print(scale, cout);
 }
 
@@ -47,6 +46,13 @@ void SevenSegmentLine::print(ostream &out) {
 }
 
 void SevenSegmentLine::print(const int scale, ostream &out) {
+    vector<string> all = this->getLine(scale);
+    out << endl;
+    copy(all.begin(), all.end(), ostream_iterator<string > (out, "\n"));
+    out << endl;
+}
+
+vector<string> SevenSegmentLine::getLine(const int scale) {
     if (scale <= 0)
         throw "Scale must be >= 1";
     if (digits.size() <= 0)
@@ -59,8 +65,5 @@ void SevenSegmentLine::print(const int scale, ostream &out) {
             all[k] += " " + v[k];
         }
     }
-
-    cout << endl;
-    copy(all.begin(), all.end(), ostream_iterator<string > (cout, "\n"));
-    cout << endl;
+    return all;
 }

@@ -6,12 +6,13 @@
 
 class SevenSegmentLine {
 public:
-    SevenSegmentLine(int);
-    SevenSegmentLine(std::string);
+    SevenSegmentLine(const int);
+    SevenSegmentLine(const std::string);
     void print();
-    void print(int);
-    void print(std::ostream &out);
-    void print(int, std::ostream &out);
+    void print(const int);
+    void print(std::ostream&);
+    void print(const int, std::ostream&);
+    std::vector<std::string> getLine(const int);
 private:
     std::vector<SevenSegmentDigit> digits;
     void init(std::string);
