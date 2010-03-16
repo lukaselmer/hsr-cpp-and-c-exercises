@@ -1,3 +1,7 @@
+/*
+ * Author: Lukas Elmer
+ */
+
 #ifndef _SEVENSEGMENTLINE_H
 #define	_SEVENSEGMENTLINE_H
 

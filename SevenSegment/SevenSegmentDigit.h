@@ -1,3 +1,7 @@
+/*
+ * Author: Lukas Elmer
+ */
+
 #ifndef _SEVENSEGMENTDIGIT_H
 #define	_SEVENSEGMENTDIGIT_H
 

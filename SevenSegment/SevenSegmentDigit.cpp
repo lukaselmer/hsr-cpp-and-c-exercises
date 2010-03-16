@@ -1,3 +1,7 @@
+/*
+ * Author: Lukas Elmer
+ */
+
 #define Ob(x)  ((unsigned)Ob_(0 ## x ## uL))
 #define Ob_(x) (x & 1 | x >> 2 & 2 | x >> 4 & 4 | x >> 6 & 8 | x >> 8 & 16 | x >> 10 & 32 | x >> 12 & 64 | x >> 14 & 128)
 

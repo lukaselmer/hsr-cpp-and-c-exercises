@@ -1,8 +1,5 @@
 /* 
- * File:   Main.cpp
  * Author: Lukas Elmer
- *
- * Created on 11. März 2010, 10:21
  */
 
 #include "cute.h"

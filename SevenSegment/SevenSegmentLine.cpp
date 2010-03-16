@@ -1,3 +1,7 @@
+/*
+ * Author: Lukas Elmer
+ */
+
 #include "SevenSegmentLine.h"
 #include "SevenSegmentDigit.h"
 #include <boost/lexical_cast.hpp>
