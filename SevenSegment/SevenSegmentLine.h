@@ -17,6 +17,8 @@ public:
     SevenSegmentLine(std::string);
     void print();
     void print(int);
+    void print(std::ostream &out);
+    void print(int, std::ostream &out);
 private:
     std::vector<SevenSegmentDigit> digits;
     void init(std::string);

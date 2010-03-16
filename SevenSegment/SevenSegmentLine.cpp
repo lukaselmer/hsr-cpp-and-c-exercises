@@ -42,10 +42,18 @@ void SevenSegmentLine::init(string inputString) {
 }
 
 void SevenSegmentLine::print() {
-    print(1);
+    print(1, cout);
 }
 
 void SevenSegmentLine::print(const int scale) {
+    print(scale, cout);
+}
+
+void SevenSegmentLine::print(ostream &out) {
+    print(1, out);
+}
+
+void SevenSegmentLine::print(const int scale, ostream &out) {
     if (scale <= 0)
         throw "Scale must be >= 1";
     if (digits.size() <= 0)

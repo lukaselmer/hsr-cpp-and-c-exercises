@@ -5,9 +5,10 @@
  * Created on 10. März 2010, 11:25
  */
 
-#include "SevenSegmentDigit.h"
-#include "SevenSegmentLine.h"
-#include <stdlib.h>
+//#include "SevenSegmentDigit.h"
+//#include "SevenSegmentLine.h"
+//#include <stdlib.h>
+//
 
 /*
 int main(int argc, char** argv) {

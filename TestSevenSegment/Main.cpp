@@ -41,7 +41,7 @@ namespace {
                 "|  ",
                 " - ";
         ASSERT_EQUAL(expected, d.getStringVector(1));
-        ASSERT(expected == d.getStringVector(1));
+        //ASSERT(expected == d.getStringVector(1));
     }
 
     void sevenSegmentDigitScaleTest() {
@@ -56,7 +56,13 @@ namespace {
                 "|   ",
                 " -- ";
         ASSERT_EQUAL(expected, d.getStringVector(2));
-        ASSERT(expected == d.getStringVector(2));
+        //ASSERT(expected == d.getStringVector(2));
+    }
+
+    void sevenSegmentListTest() {
+        SevenSegmentLine l("784");
+        l.print(1);
+        //ASSERT(expected == d.getStringVector(2));
     }
 
     void runSuite() {
@@ -64,6 +70,7 @@ namespace {
         //TODO add your test here
         s.push_back(CUTE(sevenSegmentDigitTest));
         s.push_back(CUTE(sevenSegmentDigitScaleTest));
+        s.push_back(CUTE(sevenSegmentListTest));
         cute::ide_listener lis;
         cute::makeRunner(lis)(s, "The Suite");
     }
@@ -87,21 +94,21 @@ int main(int argc, char** argv) {
     l = SevenSegmentLine(0);
     l.print(1);
     l = SevenSegmentLine(1);
-    l.print(2);
-    l = SevenSegmentLine(2);
     l.print(3);
-    l = SevenSegmentLine(3);
-    l.print(4);
-    l = SevenSegmentLine(4);
+    l = SevenSegmentLine(2);
     l.print(5);
-    l = SevenSegmentLine(5);
-    l.print(6);
-    l = SevenSegmentLine(6);
+    l = SevenSegmentLine(3);
     l.print(7);
+    l = SevenSegmentLine(4);
+    l.print(9);
+    l = SevenSegmentLine(5);
+    l.print(11);
+    l = SevenSegmentLine(6);
+    l.print(13);
     l = SevenSegmentLine(7);
-    l.print(8);
-    l = SevenSegmentLine(8);
     l.print(15);
+    l = SevenSegmentLine(8);
+    l.print(17);
     l = SevenSegmentLine(9);
     l.print(20);
     return (EXIT_SUCCESS);

@@ -5,20 +5,18 @@
  * Created on 10. März 2010, 12:45
  */
 #include "SevenSegmentDigit.h"
-#include <boost/assign/std/vector.hpp>
-#include <boost/assert.hpp>
-#include <vector>
-#include <string>
-#include <iostream>
 
 using namespace std;
 using namespace boost::assign;
 
-SevenSegmentDigit::SevenSegmentDigit(int digit) {
+
+SevenSegmentDigit::mapType SevenSegmentDigit::digitsMap;
+bool b = SevenSegmentDigit::defineDigitsMap();
+
+SevenSegmentDigit::SevenSegmentDigit(int d) : digit(d) {
     if (digit > 9 || digit < -1) {
         throw "Illegal input. Digit must be [0-9]";
     }
-    this->digit = digit;
 }
 
 /**
@@ -64,43 +62,11 @@ void SevenSegmentDigit::addVertical(bool left, bool right, int scale, vector<str
 }
 
 vector<bool> SevenSegmentDigit::getBoolVector() {
-    vector<bool> ii; // array of (A,B,C,D,E,F,G), see http://upload.wikimedia.org/wikipedia/commons/0/02/7_segment_display_labeled.svg
-    switch (digit) {
-        case 0:
-            ii += true, true, true, true, true, true, false;
-            break;
-        case 1:
-            ii += false, true, true, false, false, false, false;
-            break;
-        case 2:
-            ii += true, true, false, true, true, false, true;
-            break;
-        case 3:
-            ii += true, true, true, true, false, false, true;
-            break;
-        case 4:
-            ii += false, true, true, false, false, true, true;
-            break;
-        case 5:
-            ii += true, false, true, true, false, true, true;
-            break;
-        case 6:
-            ii += true, false, true, true, true, true, true;
-            break;
-        case 7:
-            ii += true, true, true, false, false, false, false;
-            break;
-        case 8:
-            ii += true, true, true, true, true, true, true;
-            break;
-        case 9:
-            ii += true, true, true, true, false, true, true;
-            break;
-        case -1:
-            ii += false, false, false, false, false, false, false;
-            break;
-        default:
-            throw "Illegal input";
+    mapType::iterator ditigIt;
+    ditigIt = digitsMap.find(digit);
+    if (ditigIt != digitsMap.end()) {
+        return ditigIt->second;
+    } else {
+        throw "Illegal input";
     }
-    return ii;
 }
