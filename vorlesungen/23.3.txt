@@ -1,0 +1,9 @@
+
+void f(int a, int &b; int const &c){}
+
+int x = 7;
+f(5, x, 7); // OK
+
+
+void f(int const& c){} // OK
+void f(int &const c){} // NICHT OK
