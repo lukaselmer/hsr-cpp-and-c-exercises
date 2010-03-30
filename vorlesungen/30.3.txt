@@ -1,0 +1,18 @@
+Funktionsaufruf mit Seiteneffekt:
+1. Referenzparameter
+ * testbar
+ * flexibel
+ * klar, was geändert wird
+2. Globale Variabeln
+ * unklar, wo was geändert wird
+ 
+Polimorphie
+1. Dynamisch
+ * zur Laufzeit
+ * "Vererbung"
+2. Statisch
+ * zur Compilierzeit
+ * bsp: überladen von funktionen f(int); f(double); f(bool);
+  -> anhand parameter unterscheidbar
+  -> problem (ambiguous(mehrdeutige) functions)
+
