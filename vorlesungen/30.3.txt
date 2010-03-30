@@ -19,4 +19,6 @@ Polimorphie
   -> int foo(int x)){ return x * 2; };
   -> void doit(int i, int f(int)){ f(i) };
   -> doit(10, foo); // returns 2 * 10 = 20
-  
+  -> bsp: sort (rückgabetyp bool = prädikat)
+  -> for_each
+
