@@ -15,4 +15,8 @@ Polimorphie
  * bsp: überladen von funktionen f(int); f(double); f(bool);
   -> anhand parameter unterscheidbar
   -> problem (ambiguous(mehrdeutige) functions)
-
+ * bsp: funktion übergeben
+  -> int foo(int x)){ return x * 2; };
+  -> void doit(int i, int f(int)){ f(i) };
+  -> doit(10, foo); // returns 2 * 10 = 20
+  
