@@ -13,9 +13,9 @@
 
 class Rational {
 public:
-    Rational(long, long = 1);
-    Rational(const Rational& orig);
-    virtual ~Rational();
+    typedef long numericType;
+    typedef unsigned long absNumericType;
+    Rational(numericType, numericType = 1);
 
     Rational & operator+=(const Rational&);
     Rational & operator-=(const Rational&);
@@ -23,14 +23,27 @@ public:
     Rational & operator/=(const Rational&);
 
     void print(std::ostream& = std::cout) const;
+
+    Rational& abs();
+    Rational& chs();
     Rational& normalize();
-    void makePositive();
-    Rational abs() const;
+    Rational& set(const Rational&);
+    Rational& setZero();
+
     bool isZero() const;
 private:
+    Rational & additionOrSubtraction(const Rational&, bool addition = false);
     bool negative;
-    unsigned long numerator;
-    unsigned long denumerator;
+    absNumericType numerator;
+    absNumericType denumerator;
 };
+
+Rational operator+(const Rational&, const Rational&);
+Rational operator-(const Rational&, const Rational&);
+Rational operator*(const Rational&, const Rational&);
+Rational operator/(const Rational&, const Rational&);
+Rational operator==(const Rational&, const Rational&);
+Rational operator>(const Rational&, const Rational&);
+Rational operator<(const Rational&, const Rational&);
 
 #endif	/* _RATIONAL_H */

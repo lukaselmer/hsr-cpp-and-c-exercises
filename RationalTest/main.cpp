@@ -16,107 +16,133 @@
 
 using namespace std;
 
+void testRational(const Rational& r, const string& s);
+void testRational(const long numerator, const long denumerator, const string& s);
+void testAddition(const long, const long, const long, const long, const string& s);
+void testSubtraction(const long, const long, const long, const long, const string& s);
+void testMultiplication(const long, const long, const long, const long, const string& s);
+void testDivision(const long, const long, const long, const long, const string& s);
+
+void testRational(const Rational& r, const string& s) {
+    std::ostringstream os;
+    r.print(os);
+    ASSERT_EQUAL(s + "\n", os.str());
+}
+
+void testRational(const long numerator, const long denumerator, const string& s) {
+    testRational(Rational(numerator, denumerator), s);
+}
+
+void testAddition(const long numerator1, const long denumerator1,
+        const long numerator2, const long denumerator2, const string& s) {
+    testRational(Rational(numerator1, denumerator1) + Rational(numerator2, denumerator2), s);
+    Rational r(numerator1, denumerator1);
+    r += Rational(numerator2, denumerator2);
+    testRational(r, s);
+}
+
+void testSubtraction(const long numerator1, const long denumerator1,
+        const long numerator2, const long denumerator2, const string& s) {
+    testRational(Rational(numerator1, denumerator1) - Rational(numerator2, denumerator2), s);
+    Rational r(numerator1, denumerator1);
+    r -= Rational(numerator2, denumerator2);
+    testRational(r, s);
+}
+
+void testMultiplication(const long numerator1, const long denumerator1,
+        const long numerator2, const long denumerator2, const string& s) {
+    testRational(Rational(numerator1, denumerator1) + Rational(numerator2, denumerator2), s);
+    Rational r(numerator1, denumerator1);
+    r += Rational(numerator2, denumerator2);
+    testRational(r, s);
+}
+
+void testDivision(const long numerator1, const long denumerator1,
+        const long numerator2, const long denumerator2, const string& s) {
+    testRational(Rational(numerator1, denumerator1) + Rational(numerator2, denumerator2), s);
+    Rational r(numerator1, denumerator1);
+    r += Rational(numerator2, denumerator2);
+    testRational(r, s);
+}
+
 void print() {
-    std::ostringstream os;
-    Rational r(2, 4);
-    r.print(os);
-    ASSERT_EQUAL("2/4\n", os.str());
+    testRational(3, 4, "3/4");
 }
 
-void normalize1() {
-    std::ostringstream os;
-    Rational r(19, 95);
-    r.normalize();
-    r.print(os);
-    ASSERT_EQUAL("1/5\n", os.str());
+void normalize() {
+    testRational(19, 95, "1/5");
+    testRational(4, 88, "1/22");
+    testRational(6, 9, "2/3");
+    testRational(9, 6, "3/2");
 }
 
-void normalize2() {
-    std::ostringstream os;
-    Rational r(4, 88);
-    r.normalize();
-    r.print(os);
-    ASSERT_EQUAL("1/22\n", os.str());
+void negative() {
+    testRational(-9, 6, "-3/2");
+    testRational(9, -6, "-3/2");
+    testRational(-9, -6, "3/2");
 }
 
-void normalize3() {
-    std::ostringstream os;
-    Rational r(6, 9);
-    r.normalize();
-    r.print(os);
-    ASSERT_EQUAL("2/3\n", os.str());
+void specialCase() {
+    testRational(0, 45, "0/1");
+    testRational(0, -6, "0/1");
 }
 
-void normalize4() {
-    std::ostringstream os;
-    Rational r(9, 6);
-    r.normalize();
-    r.print(os);
-    ASSERT_EQUAL("3/2\n", os.str());
-}
-
-void negative1() {
-    std::ostringstream os;
-    Rational r(-9, 6);
-    r.normalize();
-    r.print(os);
-    ASSERT_EQUAL("-3/2\n", os.str());
-}
-
-void negative2() {
-    std::ostringstream os;
-    Rational r(9, -6);
-    r.normalize();
-    r.print(os);
-    ASSERT_EQUAL("-3/2\n", os.str());
-}
-
-void negative3() {
-    std::ostringstream os;
-    Rational r(-9, -6);
-    r.normalize();
-    r.print(os);
-    ASSERT_EQUAL("3/2\n", os.str());
-}
-
-void specialCase1() {
-    std::ostringstream os;
-    Rational r(0, 45);
-    r.normalize();
-    r.print(os);
-    ASSERT_EQUAL("0/1\n", os.str());
-}
-
-void specialCase2() {
-    std::ostringstream os;
-    Rational r(0, -6);
-    r.normalize();
-    r.print(os);
-    ASSERT_EQUAL("0/1\n", os.str());
-}
-
-void divisionByZero1() {
+void divisionByZero() {
     ASSERT_THROWS(Rational(3, 0), invalid_argument);
+    ASSERT_THROWS(Rational(-43, 0), invalid_argument);
 }
 
-void divisionByZero2() {
-    ASSERT_THROWS(Rational(-43, 0), invalid_argument);
+void addition() {
+    // Normal cases
+    testAddition(1, 2, 1, 4, "3/4"); // 1/2 + 1/4 = 3/4
+    testAddition(-1, 2, 1, 4, "-1/4"); // -1/2 + 1/4 = -1/4
+    testAddition(-1, 2, -1, 4, "-3/4");
+    testAddition(1, 8, 3, 8, "1/2");
+    testAddition(384, 144, 5, 12, "37/12");
+    testAddition(777, 777, 222, 222, "2/1");
+    // Special cases (Result = 1)
+    testAddition(1, 2, 1, 2, "1/1");
+    testAddition(3, 8, 10, 16, "1/1");
+    // Special cases (Result = -1)
+    testAddition(-1, 2, -1, 2, "-1/1");
+    testAddition(-3, 8, -10, 16, "-1/1");
+    // Special cases (Result = 0)
+    testAddition(777, 777, -222, 222, "0/1");
+    testAddition(-1, 2, 1, 2, "0/1");
+    testAddition(-2, 8, 1, 4, "0/1");
+}
+
+void subtraction() {
+    // Normal cases
+    testSubtraction(1, 2, 1, 4, "1/4");
+    testSubtraction(1, 2, -1, 4, "3/4");
+    testSubtraction(-1, 2, 1, 4, "-3/4");
+    testSubtraction(-1, 2, -1, 4, "-1/4");
+    testSubtraction(1, 8, 3, 8, "-1/4");
+    testSubtraction(384, 144, 5, 12, "9/4");
+    testSubtraction(777, 777, -222, 222, "2/1");
+    testSubtraction(-777, 777, 222, 222, "-2/1");
+    // Special cases (Result = 1)
+    testSubtraction(1, 2, -1, 2, "1/1");
+    testSubtraction(3, 8, -10, 16, "1/1");
+    // Special cases (Result = -1)
+    testSubtraction(-1, 2, 1, 2, "-1/1");
+    testSubtraction(-3, 8, 10, 16, "-1/1");
+    // Special cases (Result = 0)
+    testSubtraction(777, 777, 222, 222, "0/1");
+    testSubtraction(-1, 2, -1, 2, "0/1");
+    testSubtraction(2, 8, 1, 4, "0/1");
 }
 
 void runSuite() {
     cute::suite s;
     s.push_back(CUTE(print));
-    s.push_back(CUTE(normalize1));
-    s.push_back(CUTE(normalize2));
-    s.push_back(CUTE(normalize3));
-    s.push_back(CUTE(normalize4));
-    s.push_back(CUTE(negative1));
-    s.push_back(CUTE(negative2));
-    s.push_back(CUTE(negative3));
-    s.push_back(CUTE(specialCase1));
-    s.push_back(CUTE(specialCase2));
-    s.push_back(CUTE(divisionByZero1));
-    s.push_back(CUTE(divisionByZero2));
+    s.push_back(CUTE(normalize));
+    s.push_back(CUTE(negative));
+    s.push_back(CUTE(specialCase));
+    s.push_back(CUTE(divisionByZero));
+    s.push_back(CUTE(addition));
+    s.push_back(CUTE(subtraction));
     cute::ide_listener lis;
     cute::makeRunner(lis)(s, "Rational Test Suite");
 }

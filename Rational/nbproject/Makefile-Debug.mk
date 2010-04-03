@@ -31,7 +31,7 @@ OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/E_/sync/prog3/cpp_projects/Rational/Rational.o
+	${OBJECTDIR}/_ext/E_/dev/cpp_projects/Rational/Rational.o
 
 # C Compiler Flags
 CFLAGS=
@@ -59,10 +59,10 @@ dist/Debug/MinGW-Windows/librational.a: ${OBJECTFILES}
 	${AR} rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/librational.a ${OBJECTFILES} 
 	$(RANLIB) dist/Debug/MinGW-Windows/librational.a
 
-${OBJECTDIR}/_ext/E_/sync/prog3/cpp_projects/Rational/Rational.o: nbproject/Makefile-${CND_CONF}.mk /E/sync/prog3/cpp_projects/Rational/Rational.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/E_/sync/prog3/cpp_projects/Rational
+${OBJECTDIR}/_ext/E_/dev/cpp_projects/Rational/Rational.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/Rational/Rational.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/Rational
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/sync/prog3/cpp_projects/Rational/Rational.o /E/sync/prog3/cpp_projects/Rational/Rational.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/Rational/Rational.o /E/dev/cpp_projects/Rational/Rational.cpp
 
 # Subprojects
 .build-subprojects:
