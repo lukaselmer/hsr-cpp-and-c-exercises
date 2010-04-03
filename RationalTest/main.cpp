@@ -249,8 +249,8 @@ void smallerAndBigger() {
 void typeConversions() {
     Rational r1(7, 3);
     Rational r2(19, 2);
-    double d = r1 + (Rational) 2;
-    int i = r1 + (Rational) 0.7;
+    double d = r1 + 2.2;
+    int i = r1 + 0.7;
 }
 
 void runSuite() {

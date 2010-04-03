@@ -17,22 +17,24 @@ public:
     typedef unsigned long absNumericType;
     explicit Rational();
     explicit Rational(numericType, numericType = 1);
-    Rational(int);
-    Rational(float);
-    Rational(double);
+    explicit Rational(double);
 
     Rational & operator+=(const Rational&);
+    Rational & operator+=(const double&);
     Rational & operator-=(const Rational&);
+    Rational & operator-=(const double&);
     Rational & operator*=(const Rational&);
+    Rational & operator*=(const double&);
     Rational & operator/=(const Rational&);
+    Rational & operator/=(const double&);
     bool operator==(const Rational&) const;
     bool operator!=(const Rational&) const;
     bool operator<(const Rational&) const;
     bool operator>(const Rational&) const;
     bool operator<=(const Rational&) const;
     bool operator>=(const Rational&) const;
-    operator int() const;
-    operator long() const;
+    //    operator int() const;
+    //    operator long() const;
     operator double() const;
 
     void print(std::ostream& = std::cout) const;

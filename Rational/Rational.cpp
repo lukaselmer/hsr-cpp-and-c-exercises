@@ -23,16 +23,6 @@ denumerator(_denumerator < 0 ? _denumerator * -1 : _denumerator), negative(_nume
     normalize();
 }
 
-Rational::Rational(int _numerator) : numerator(_numerator < 0 ? _numerator * -1 : _numerator), denumerator(1), negative(_numerator < 0) {
-    if (numerator == 0) setZero();
-    normalize();
-}
-
-Rational::Rational(float _numerator) : numerator(numericType(_numerator < 0 ? _numerator * -1 : _numerator)), denumerator(1), negative(_numerator < 0) {
-    if (numerator == 0) setZero();
-    normalize();
-}
-
 Rational::Rational(double _numerator) : numerator(numericType(_numerator < 0 ? _numerator * -1 : _numerator)), denumerator(1), negative(_numerator < 0) {
     if (numerator == 0) setZero();
     normalize();
@@ -64,8 +54,16 @@ Rational & Rational::operator+=(const Rational& r) {
     return additionOrSubtraction(r, false);
 }
 
+Rational & Rational::operator+=(const double& d) {
+    return (*this) += Rational(d);
+}
+
 Rational & Rational::operator-=(const Rational& r) {
     return additionOrSubtraction(r, true);
+}
+
+Rational & Rational::operator-=(const double& d) {
+    return (*this) -= Rational(d);
 }
 
 Rational & Rational::operator*=(const Rational& r) {
@@ -82,6 +80,10 @@ Rational & Rational::operator*=(const Rational& r) {
     return *this;
 }
 
+Rational & Rational::operator*=(const double& d) {
+    return (*this) *= Rational(d);
+}
+
 Rational & Rational::operator/=(const Rational& r) {
     if (r.isZero()) throw std::invalid_argument("Bad divider, division by zero!");
     if (!isZero()) {
@@ -91,6 +93,10 @@ Rational & Rational::operator/=(const Rational& r) {
     }
     normalize();
     return *this;
+}
+
+Rational & Rational::operator/=(const double& d) {
+    return (*this) *= Rational(d);
 }
 
 bool Rational::operator==(const Rational& r) const {
@@ -117,16 +123,16 @@ bool Rational::operator>=(const Rational& r) const {
     return (negative ^ r.negative) ? (negative ? false : true) : (numerator * r.denumerator) >= (r.numerator * denumerator);
 }
 
-Rational::operator int() const {
-    return int(numerator) / int(denumerator);
-}
-
-Rational::operator long() const {
-    return long(numerator) / long(denumerator);
-}
+//Rational::operator int() const {
+//    return int(numerator) / int(denumerator);
+//}
+//
+//Rational::operator long() const {
+//    return long(numerator) / long(denumerator);
+//}
 
 Rational::operator double() const {
-    return double(numerator) / double(denumerator);
+    return double(numerator) / denumerator;
 }
 
 void Rational::print(ostream& out) const {

@@ -32,12 +32,10 @@ ostream & operator<<(ostream& os, const vector<T>& v) {
 }
 
 template < typename T >
-void generate(T(*f)(int)) {
+void generate(T(*f)(int), int up_to = 20) {
     vector<T> v1, v2, v3;
 
-    for (int i = 1; i <= 20; i++) {
-        v1.push_back((*f)(i));
-    }
+    for (int i = 1; i <= up_to; i++) v1.push_back((*f)(i));
     cout << v1 << endl;
 
     v2.resize(v1.size());
@@ -50,17 +48,16 @@ void generate(T(*f)(int)) {
 }
 
 template < typename T >
-T constructRational(int i) {
+T constructRationalObject(int i) {
     return T(1, i);
 }
 
 template < typename T >
-T constructRationalDouble(int i) {
+T constructRationalNumber(int i) {
     return 1.0 / i;
 }
 
 int main(int argc, char** argv) {
-    generate<Rational > (constructRational<Rational>);
-    generate<double > (constructRationalDouble<double>);
+    generate<Rational > (constructRationalObject<Rational>);
+    generate<double > (constructRationalNumber<double>);
 }
-
