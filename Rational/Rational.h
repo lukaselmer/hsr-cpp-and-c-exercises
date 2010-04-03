@@ -13,16 +13,24 @@
 
 class Rational {
 public:
-    Rational(int, int);
+    Rational(long, long = 1);
     Rational(const Rational& orig);
     virtual ~Rational();
+
+    Rational & operator+=(const Rational&);
+    Rational & operator-=(const Rational&);
+    Rational & operator*=(const Rational&);
+    Rational & operator/=(const Rational&);
+
     void print(std::ostream& = std::cout) const;
-    void normalize();
+    Rational& normalize();
+    void makePositive();
+    Rational abs() const;
+    bool isZero() const;
 private:
     bool negative;
-    unsigned int numerator;
-    unsigned int denumerator;
+    unsigned long numerator;
+    unsigned long denumerator;
 };
 
 #endif	/* _RATIONAL_H */
-
