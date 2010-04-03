@@ -15,7 +15,10 @@ class Rational {
 public:
     typedef long numericType;
     typedef unsigned long absNumericType;
-    Rational(numericType, numericType = 1);
+    explicit Rational(numericType, numericType = 1);
+    Rational(int);
+    Rational(float);
+    Rational(double);
 
     Rational & operator+=(const Rational&);
     Rational & operator-=(const Rational&);
@@ -27,6 +30,9 @@ public:
     bool operator>(const Rational&) const;
     bool operator<=(const Rational&) const;
     bool operator>=(const Rational&) const;
+    operator int() const;
+    operator long() const;
+    operator double() const;
 
     void print(std::ostream& = std::cout) const;
 
@@ -49,5 +55,4 @@ Rational operator-(const Rational&, const Rational&);
 Rational operator*(const Rational&, const Rational&);
 Rational operator/(const Rational&, const Rational&);
 std::ostream & operator<<(std::ostream&os, const Rational&);
-
 #endif	/* _RATIONAL_H */

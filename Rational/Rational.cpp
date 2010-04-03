@@ -20,6 +20,21 @@ denumerator(_denumerator < 0 ? _denumerator * -1 : _denumerator), negative(_nume
     normalize();
 }
 
+Rational::Rational(int _numerator) : numerator(_numerator < 0 ? _numerator * -1 : _numerator), denumerator(1), negative(_numerator < 0) {
+    if (numerator == 0) setZero();
+    normalize();
+}
+
+Rational::Rational(float _numerator) : numerator(numericType(_numerator < 0 ? _numerator * -1 : _numerator)), denumerator(1), negative(_numerator < 0) {
+    if (numerator == 0) setZero();
+    normalize();
+}
+
+Rational::Rational(double _numerator) : numerator(numericType(_numerator < 0 ? _numerator * -1 : _numerator)), denumerator(1), negative(_numerator < 0) {
+    if (numerator == 0) setZero();
+    normalize();
+}
+
 Rational & Rational::additionOrSubtraction(const Rational& r, bool subtraction) {
     if (!r.isZero()) {
         if (isZero()) set(r);
@@ -97,6 +112,18 @@ bool Rational::operator<=(const Rational& r) const {
 
 bool Rational::operator>=(const Rational& r) const {
     return (negative ^ r.negative) ? (negative ? false : true) : (numerator * r.denumerator) >= (r.numerator * denumerator);
+}
+
+Rational::operator int() const {
+    return int(numerator) / int(denumerator);
+}
+
+Rational::operator long() const {
+    return long(numerator) / long(denumerator);
+}
+
+Rational::operator double() const {
+    return double(numerator) / double(denumerator);
 }
 
 void Rational::print(ostream& out) const {

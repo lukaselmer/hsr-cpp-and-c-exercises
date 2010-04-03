@@ -10,7 +10,6 @@
 #include "cute.h"
 #include "ide_listener.h"
 #include "cute_runner.h"
-
 #include <iostream>
 #include <string>
 
@@ -246,6 +245,14 @@ void smallerAndBigger() {
     ASSERT((r6 >= r5));
 }
 
+void typeConversions() {
+    Rational r1(7, 3);
+    Rational r2(19, 2);
+    double d = r1 + (Rational) 2;
+    int i = r1 + (Rational) 0.7;
+
+}
+
 void runSuite() {
     cute::suite s;
     s.push_back(CUTE(print));
@@ -259,6 +266,7 @@ void runSuite() {
     s.push_back(CUTE(division));
     s.push_back(CUTE(equality));
     s.push_back(CUTE(smallerAndBigger));
+    s.push_back(CUTE(typeConversions));
     cute::ide_listener lis;
     cute::makeRunner(lis)(s, "Rational tests:");
 }
