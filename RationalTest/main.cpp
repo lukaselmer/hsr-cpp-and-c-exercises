@@ -81,14 +81,26 @@ void negative3() {
 
 void specialCase1() {
     std::ostringstream os;
-    Rational r(0, -6);
+    Rational r(0, 45);
     r.normalize();
     r.print(os);
     ASSERT_EQUAL("0/1\n", os.str());
 }
 
 void specialCase2() {
+    std::ostringstream os;
+    Rational r(0, -6);
+    r.normalize();
+    r.print(os);
+    ASSERT_EQUAL("0/1\n", os.str());
+}
+
+void divisionByZero1() {
     ASSERT_THROWS(Rational(3, 0), invalid_argument);
+}
+
+void divisionByZero2() {
+    ASSERT_THROWS(Rational(-43, 0), invalid_argument);
 }
 
 void runSuite() {
@@ -103,6 +115,8 @@ void runSuite() {
     s.push_back(CUTE(negative3));
     s.push_back(CUTE(specialCase1));
     s.push_back(CUTE(specialCase2));
+    s.push_back(CUTE(divisionByZero1));
+    s.push_back(CUTE(divisionByZero2));
     cute::ide_listener lis;
     cute::makeRunner(lis)(s, "Rational Test Suite");
 }
