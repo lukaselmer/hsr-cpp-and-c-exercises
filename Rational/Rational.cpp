@@ -60,6 +60,7 @@ Rational & Rational::operator*=(const Rational& r) {
             if (r.negative) chs();
         }
     }
+    normalize();
     return *this;
 }
 
@@ -70,6 +71,7 @@ Rational & Rational::operator/=(const Rational& r) {
         denumerator *= r.numerator;
         if (r.negative) chs();
     }
+    normalize();
     return *this;
 }
 

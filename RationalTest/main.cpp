@@ -87,7 +87,7 @@ void specialCase() {
     testRational(0, -6, "0/1");
 }
 
-void divisionByZero() {
+void constructorDivisionByZero() {
     ASSERT_THROWS(Rational(3, 0), invalid_argument);
     ASSERT_THROWS(Rational(-43, 0), invalid_argument);
 }
@@ -154,20 +154,26 @@ void multiplication() {
 
 void division() {
     // Normal cases
-    testMultiplication(3, 2, 1, 4, "3/8");
-    testMultiplication(1, 2, -1, 4, "-1/8");
-    testMultiplication(-3, 2, 5, 4, "-15/8");
-    testMultiplication(-1, 2, -1, 4, "1/8");
+    testDivision(4, 1, 1, 4, "16/1");
+    testDivision(1, 8, -1, 4, "-1/2");
+    testDivision(-15, 8, 5, 4, "-3/2");
+    testDivision(-1, 8, -1, 4, "1/2");
     // Special cases (Result = 1)
-    testMultiplication(1, 1, 1, 1, "1/1");
-    testMultiplication(-1, 1, -1, 1, "1/1");
+    testDivision(1, 1, 1, 1, "1/1");
+    testDivision(3, 2, 3, 2, "1/1");
+    testDivision(1, 17, 2, 34, "1/1");
+    testDivision(-1, 1, -1, 1, "1/1");
     // Special cases (Result = -1)
-    testMultiplication(-1, 1, 1, 1, "-1/1");
-    testMultiplication(1, 1, -1, 1, "-1/1");
+    testDivision(-1, 1, 1, 1, "-1/1");
+    testDivision(1, 1, -1, 1, "-1/1");
+    testDivision(10, 13, -10, 13, "-1/1");
+    testDivision(-10, 13, 10, 13, "-1/1");
     // Special cases (Result = 0)
-    testMultiplication(0, 34, 2, 10, "0/1");
-    testMultiplication(0, 23, 0, 42, "0/1");
-    testMultiplication(34, 23, 0, 4, "0/1");
+    testDivision(0, 34, 2, 10, "0/1");
+    testDivision(0, 543, 23, 5332, "0/1");
+    // Division by zero
+    ASSERT_THROWS(testDivision(0, 23, 0, 42, "0/1"), invalid_argument);
+    ASSERT_THROWS(testDivision(34, 23, 0, 4, "0/1"), invalid_argument);
 }
 
 void runSuite() {
@@ -176,7 +182,7 @@ void runSuite() {
     s.push_back(CUTE(normalize));
     s.push_back(CUTE(negative));
     s.push_back(CUTE(specialCase));
-    s.push_back(CUTE(divisionByZero));
+    s.push_back(CUTE(constructorDivisionByZero));
     s.push_back(CUTE(addition));
     s.push_back(CUTE(subtraction));
     s.push_back(CUTE(multiplication));
