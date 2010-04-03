@@ -13,6 +13,9 @@
 
 using namespace std;
 
+Rational::Rational() : numerator(0), denumerator(1), negative(false) {
+}
+
 Rational::Rational(numericType _numerator, numericType _denumerator) : numerator(_numerator < 0 ? _numerator * -1 : _numerator),
 denumerator(_denumerator < 0 ? _denumerator * -1 : _denumerator), negative(_numerator < 0 ^ _denumerator < 0) {
     if (denumerator == 0) throw std::invalid_argument("Bad denumerator, division by zero!");
@@ -127,7 +130,7 @@ Rational::operator double() const {
 }
 
 void Rational::print(ostream& out) const {
-    out << (negative ? "-" : "") << numerator << "/" << denumerator << endl;
+    out << (negative ? "-" : "") << numerator << "/" << denumerator;
 }
 
 Rational& Rational::abs() {

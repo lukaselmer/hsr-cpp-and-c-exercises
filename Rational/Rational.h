@@ -15,6 +15,7 @@ class Rational {
 public:
     typedef long numericType;
     typedef unsigned long absNumericType;
+    explicit Rational();
     explicit Rational(numericType, numericType = 1);
     Rational(int);
     Rational(float);

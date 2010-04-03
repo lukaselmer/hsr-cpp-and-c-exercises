@@ -10,6 +10,7 @@
 #include "cute.h"
 #include "ide_listener.h"
 #include "cute_runner.h"
+
 #include <iostream>
 #include <string>
 
@@ -25,7 +26,7 @@ void testDivision(const long, const long, const long, const long, const string& 
 void testRational(const Rational& r, const string& s) {
     std::ostringstream os;
     r.print(os);
-    ASSERT_EQUAL(s + "\n", os.str());
+    ASSERT_EQUAL(s, os.str());
 }
 
 void testRational(const long numerator, const long denumerator, const string& s) {
@@ -69,7 +70,7 @@ void print() {
     Rational r(31, 21);
     std::ostringstream os;
     os << r;
-    ASSERT_EQUAL("31/21\n", os.str());
+    ASSERT_EQUAL("31/21", os.str());
 }
 
 void normalize() {
