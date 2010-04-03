@@ -92,6 +92,3 @@ Rational Rational::abs() const {
     return r;
     
 }
-
-
-
