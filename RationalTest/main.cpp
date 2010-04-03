@@ -250,7 +250,6 @@ void typeConversions() {
     Rational r2(19, 2);
     double d = r1 + (Rational) 2;
     int i = r1 + (Rational) 0.7;
-
 }
 
 void runSuite() {
