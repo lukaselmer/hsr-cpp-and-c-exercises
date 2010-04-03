@@ -67,6 +67,10 @@ void testDivision(const long numerator1, const long denumerator1,
 
 void print() {
     testRational(3, 4, "3/4");
+    Rational r(31, 21);
+    std::ostringstream os;
+    os << r;
+    ASSERT_EQUAL("31/21\n", os.str());
 }
 
 void normalize() {
@@ -176,6 +180,72 @@ void division() {
     ASSERT_THROWS(testDivision(34, 23, 0, 4, "0/1"), invalid_argument);
 }
 
+void equality() {
+    Rational r1(4, 10);
+    Rational r2(2, 5);
+    Rational r3(-2, 5);
+    Rational r4(4, -10);
+
+    ASSERT(r1 == r2);
+    ASSERT(!(r1 == r3));
+    ASSERT(!(r2 == r3));
+    ASSERT(r3 == r4);
+
+    ASSERT(!(r1 != r2));
+    ASSERT(r1 != r3);
+    ASSERT(r2 != r3);
+    ASSERT(!(r3 != r4));
+}
+
+void smallerAndBigger() {
+    Rational r1(4, 10);
+    Rational r2(2, 5);
+    Rational r3(-2, 5);
+    Rational r4(4, -10);
+    Rational r5(1, 2);
+    Rational r6(3, 4);
+
+    ASSERT(!(r1 < r2));
+    ASSERT(!(r1 > r2));
+    ASSERT(!(r2 < r1));
+    ASSERT(!(r2 > r1));
+
+    ASSERT(!(r1 < r3));
+    ASSERT((r1 > r3));
+    ASSERT((r3 < r1));
+    ASSERT(!(r3 > r1));
+
+    ASSERT((r4 < r5));
+    ASSERT(!(r4 > r5));
+    ASSERT(!(r5 < r4));
+    ASSERT((r5 > r4));
+
+    ASSERT((r5 < r6));
+    ASSERT(!(r5 > r6));
+    ASSERT(!(r6 < r5));
+    ASSERT((r6 > r5));
+
+    ASSERT((r1 <= r2));
+    ASSERT((r1 >= r2));
+    ASSERT((r2 <= r1));
+    ASSERT((r2 >= r1));
+
+    ASSERT(!(r1 <= r3));
+    ASSERT((r1 >= r3));
+    ASSERT((r3 <= r1));
+    ASSERT(!(r3 >= r1));
+
+    ASSERT((r4 <= r5));
+    ASSERT(!(r4 >= r5));
+    ASSERT(!(r5 <= r4));
+    ASSERT((r5 >= r4));
+
+    ASSERT((r5 <= r6));
+    ASSERT(!(r5 >= r6));
+    ASSERT(!(r6 <= r5));
+    ASSERT((r6 >= r5));
+}
+
 void runSuite() {
     cute::suite s;
     s.push_back(CUTE(print));
@@ -187,8 +257,10 @@ void runSuite() {
     s.push_back(CUTE(subtraction));
     s.push_back(CUTE(multiplication));
     s.push_back(CUTE(division));
+    s.push_back(CUTE(equality));
+    s.push_back(CUTE(smallerAndBigger));
     cute::ide_listener lis;
-    cute::makeRunner(lis)(s, "Rational Test Suite");
+    cute::makeRunner(lis)(s, "Rational tests:");
 }
 
 int main(int argc, char** argv) {

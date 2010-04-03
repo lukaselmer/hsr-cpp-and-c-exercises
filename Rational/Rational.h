@@ -21,6 +21,12 @@ public:
     Rational & operator-=(const Rational&);
     Rational & operator*=(const Rational&);
     Rational & operator/=(const Rational&);
+    bool operator==(const Rational&) const;
+    bool operator!=(const Rational&) const;
+    bool operator<(const Rational&) const;
+    bool operator>(const Rational&) const;
+    bool operator<=(const Rational&) const;
+    bool operator>=(const Rational&) const;
 
     void print(std::ostream& = std::cout) const;
 
@@ -42,8 +48,6 @@ Rational operator+(const Rational&, const Rational&);
 Rational operator-(const Rational&, const Rational&);
 Rational operator*(const Rational&, const Rational&);
 Rational operator/(const Rational&, const Rational&);
-Rational operator==(const Rational&, const Rational&);
-Rational operator>(const Rational&, const Rational&);
-Rational operator<(const Rational&, const Rational&);
+std::ostream & operator<<(std::ostream&os, const Rational&);
 
 #endif	/* _RATIONAL_H */

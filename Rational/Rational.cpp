@@ -75,6 +75,30 @@ Rational & Rational::operator/=(const Rational& r) {
     return *this;
 }
 
+bool Rational::operator==(const Rational& r) const {
+    return negative == r.negative && numerator == r.numerator && denumerator == r.denumerator;
+}
+
+bool Rational::operator!=(const Rational& r) const {
+    return negative != r.negative || numerator != r.numerator || denumerator != r.denumerator;
+}
+
+bool Rational::operator<(const Rational& r) const {
+    return (negative ^ r.negative) ? (negative ? true : false) : (numerator * r.denumerator) < (r.numerator * denumerator);
+}
+
+bool Rational::operator>(const Rational& r) const {
+    return (negative ^ r.negative) ? (negative ? false : true) : (numerator * r.denumerator) > (r.numerator * denumerator);
+}
+
+bool Rational::operator<=(const Rational& r) const {
+    return (negative ^ r.negative) ? (negative ? true : false) : (numerator * r.denumerator) <= (r.numerator * denumerator);
+}
+
+bool Rational::operator>=(const Rational& r) const {
+    return (negative ^ r.negative) ? (negative ? false : true) : (numerator * r.denumerator) >= (r.numerator * denumerator);
+}
+
 void Rational::print(ostream& out) const {
     out << (negative ? "-" : "") << numerator << "/" << denumerator << endl;
 }
@@ -136,3 +160,7 @@ Rational operator/(const Rational& r1, const Rational& r2) {
     return Rational(r1) /= r2;
 }
 
+std::ostream & operator<<(std::ostream&os, const Rational&r) {
+    r.print(os);
+    return os;
+}
