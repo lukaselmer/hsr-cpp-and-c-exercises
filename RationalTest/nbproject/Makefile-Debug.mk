@@ -47,13 +47,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=E:/sync/prog3/cpp_projects/Rational/dist/Debug/MinGW-Windows/librational.a
+LDLIBSOPTIONS=E:/dev/cpp_projects/Rational/dist/Debug/MinGW-Windows/librational.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/MinGW-Windows/rationaltest.exe
 
-dist/Debug/MinGW-Windows/rationaltest.exe: /E/sync/prog3/cpp_projects/Rational/dist/Debug/MinGW-Windows/librational.a
+dist/Debug/MinGW-Windows/rationaltest.exe: /E/dev/cpp_projects/Rational/dist/Debug/MinGW-Windows/librational.a
 
 dist/Debug/MinGW-Windows/rationaltest.exe: ${OBJECTFILES}
 	${MKDIR} -p dist/Debug/MinGW-Windows
@@ -62,11 +62,11 @@ dist/Debug/MinGW-Windows/rationaltest.exe: ${OBJECTFILES}
 ${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -I/E/sync/prog3/cpp_projects/Rational -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I/E/dev/cpp_projects/Rational -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
-	cd E\:/sync/prog3/cpp_projects/Rational && ${MAKE}  -f Makefile CONF=Debug
+	cd E\:/dev/cpp_projects/Rational && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -75,7 +75,7 @@ ${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.cpp
 
 # Subprojects
 .clean-subprojects:
-	cd E\:/sync/prog3/cpp_projects/Rational && ${MAKE}  -f Makefile CONF=Debug clean
+	cd E\:/dev/cpp_projects/Rational && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

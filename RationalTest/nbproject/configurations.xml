@@ -31,21 +31,21 @@
       <compileType>
         <ccTool>
           <incDir>
-            <pElem>E:/sync/prog3/cpp_projects/Rational</pElem>
+            <pElem>E:/dev/cpp_projects/Rational</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>E:/sync/prog3/cpp_projects/Rational/dist/Debug/MinGW-Windows/librational.a</linkerLibFileItem>
+            <linkerLibFileItem>E:/dev/cpp_projects/Rational/dist/Debug/MinGW-Windows/librational.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <requiredProjects>
-          <makeArtifact PL="E:/sync/prog3/cpp_projects/Rational"
+          <makeArtifact PL="E:/dev/cpp_projects/Rational"
                         CT="3"
                         CN="Debug"
                         AC="true"
                         BL="true"
-                        WD="E:/sync/prog3/cpp_projects/Rational"
+                        WD="E:/dev/cpp_projects/Rational"
                         BC="${MAKE}  -f Makefile CONF=Debug"
                         CC="${MAKE}  -f Makefile CONF=Debug clean"
                         OP="dist/Debug/MinGW-Windows/librational.a">
