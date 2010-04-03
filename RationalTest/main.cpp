@@ -51,17 +51,17 @@ void testSubtraction(const long numerator1, const long denumerator1,
 
 void testMultiplication(const long numerator1, const long denumerator1,
         const long numerator2, const long denumerator2, const string& s) {
-    testRational(Rational(numerator1, denumerator1) + Rational(numerator2, denumerator2), s);
+    testRational(Rational(numerator1, denumerator1) * Rational(numerator2, denumerator2), s);
     Rational r(numerator1, denumerator1);
-    r += Rational(numerator2, denumerator2);
+    r *= Rational(numerator2, denumerator2);
     testRational(r, s);
 }
 
 void testDivision(const long numerator1, const long denumerator1,
         const long numerator2, const long denumerator2, const string& s) {
-    testRational(Rational(numerator1, denumerator1) + Rational(numerator2, denumerator2), s);
+    testRational(Rational(numerator1, denumerator1) / Rational(numerator2, denumerator2), s);
     Rational r(numerator1, denumerator1);
-    r += Rational(numerator2, denumerator2);
+    r /= Rational(numerator2, denumerator2);
     testRational(r, s);
 }
 
@@ -134,6 +134,42 @@ void subtraction() {
     testSubtraction(2, 8, 1, 4, "0/1");
 }
 
+void multiplication() {
+    // Normal cases
+    testMultiplication(3, 2, 1, 4, "3/8");
+    testMultiplication(1, 2, -1, 4, "-1/8");
+    testMultiplication(-3, 2, 5, 4, "-15/8");
+    testMultiplication(-1, 2, -1, 4, "1/8");
+    // Special cases (Result = 1)
+    testMultiplication(1, 1, 1, 1, "1/1");
+    testMultiplication(-1, 1, -1, 1, "1/1");
+    // Special cases (Result = -1)
+    testMultiplication(-1, 1, 1, 1, "-1/1");
+    testMultiplication(1, 1, -1, 1, "-1/1");
+    // Special cases (Result = 0)
+    testMultiplication(0, 34, 2, 10, "0/1");
+    testMultiplication(0, 23, 0, 42, "0/1");
+    testMultiplication(34, 23, 0, 4, "0/1");
+}
+
+void division() {
+    // Normal cases
+    testMultiplication(3, 2, 1, 4, "3/8");
+    testMultiplication(1, 2, -1, 4, "-1/8");
+    testMultiplication(-3, 2, 5, 4, "-15/8");
+    testMultiplication(-1, 2, -1, 4, "1/8");
+    // Special cases (Result = 1)
+    testMultiplication(1, 1, 1, 1, "1/1");
+    testMultiplication(-1, 1, -1, 1, "1/1");
+    // Special cases (Result = -1)
+    testMultiplication(-1, 1, 1, 1, "-1/1");
+    testMultiplication(1, 1, -1, 1, "-1/1");
+    // Special cases (Result = 0)
+    testMultiplication(0, 34, 2, 10, "0/1");
+    testMultiplication(0, 23, 0, 42, "0/1");
+    testMultiplication(34, 23, 0, 4, "0/1");
+}
+
 void runSuite() {
     cute::suite s;
     s.push_back(CUTE(print));
@@ -143,6 +179,8 @@ void runSuite() {
     s.push_back(CUTE(divisionByZero));
     s.push_back(CUTE(addition));
     s.push_back(CUTE(subtraction));
+    s.push_back(CUTE(multiplication));
+    s.push_back(CUTE(division));
     cute::ide_listener lis;
     cute::makeRunner(lis)(s, "Rational Test Suite");
 }
