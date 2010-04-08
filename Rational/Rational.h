@@ -18,6 +18,8 @@ public:
     explicit Rational();
     explicit Rational(numericType, numericType = 1);
     explicit Rational(double);
+    //explicit Rational(int);
+    //explicit Rational(long);
 
     Rational & operator+=(const Rational&);
     Rational & operator+=(const double&);
@@ -33,7 +35,7 @@ public:
     bool operator>(const Rational&) const;
     bool operator<=(const Rational&) const;
     bool operator>=(const Rational&) const;
-    //    operator int() const;
+    //operator int() const;
     //    operator long() const;
     operator double() const;
 
