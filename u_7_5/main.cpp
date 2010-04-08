@@ -32,32 +32,27 @@ ostream & operator<<(ostream& os, const vector<T>& v) {
 }
 
 template < typename T >
-void generate(T(*f)(int), int up_to = 20) {
-    vector<T> v1, v2, v3;
-
-    for (int i = 1; i <= up_to; i++) v1.push_back((*f)(i));
-    cout << v1 << endl;
-
-    v2.resize(v1.size());
-    transform(v1.begin(), v1.end(), v2.begin(), square<T>);
-    cout << v2 << endl;
-
-    v3.resize(v1.size());
-    transform(v1.begin(), v1.end(), v2.begin(), v3.begin(), product<T>);
-    cout << v3 << endl;
+ostream & operator<<(ostream& os, const vector<vector<T> > & v) {
+    copy(v.begin(), v.end(), ostream_iterator<vector<T> > (os, "\n"));
+    return os;
 }
 
 template < typename T >
-T constructRationalObject(int i) {
-    return T(1, i);
+T generateRational() {
+    static int i = 0;
+    return (T(1) / T(++i));
 }
 
 template < typename T >
-T constructRationalNumber(int i) {
-    return 1.0 / i;
+vector<vector<T> > generateAndTransform(int up_to = 20) {
+    vector<vector<T> > vv(3, vector<T>(up_to));
+    generate(vv.at(0).begin(), vv.at(0).end(), generateRational<T>);
+    transform(vv.at(0).begin(), vv.at(0).end(), vv.at(1).begin(), square<T>);
+    transform(vv.at(0).begin(), vv.at(0).end(), vv.at(1).begin(), vv.at(2).begin(), product<T>);
+    return vv;
 }
 
 int main(int argc, char** argv) {
-    generate<Rational > (constructRationalObject<Rational>);
-    generate<double > (constructRationalNumber<double>);
+    cout << generateAndTransform<Rational> () << endl;
+    cout << generateAndTransform<int> () << endl;
 }
