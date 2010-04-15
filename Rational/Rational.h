@@ -18,7 +18,7 @@ public:
     explicit Rational();
     explicit Rational(numericType, numericType = 1);
     explicit Rational(double);
-    //explicit Rational(int);
+    explicit Rational(int);
     //explicit Rational(long);
 
     Rational & operator+=(const Rational&);

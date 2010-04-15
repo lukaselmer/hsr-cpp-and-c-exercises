@@ -28,11 +28,11 @@ Rational::Rational(double _numerator) : numerator(numericType(_numerator < 0 ? _
     normalize();
 }
 
-//Rational::Rational(int _numerator) : numerator(numericType(_numerator < 0 ? _numerator * -1 : _numerator)), denumerator(1), negative(_numerator < 0) {
-//    if (numerator == 0) setZero();
-//    normalize();
-//}
-//
+Rational::Rational(int _numerator) : numerator(numericType(_numerator < 0 ? _numerator * -1 : _numerator)), denumerator(1), negative(_numerator < 0) {
+    if (numerator == 0) setZero();
+    normalize();
+}
+
 //Rational::Rational(long _numerator) : numerator(numericType(_numerator < 0 ? _numerator * -1 : _numerator)), denumerator(1), negative(_numerator < 0) {
 //    if (numerator == 0) setZero();
 //    normalize();
