@@ -246,10 +246,15 @@ void smallerAndBigger() {
     ASSERT((r6 >= r5));
 }
 
+/**
+ * TODO: complete this test
+ * You probably would use static_cast<T>(i) in your implementation
+ **/
 void typeConversions() {
     Rational r1(7, 3);
     Rational r2(19, 2);
     double d = r1 + 2.2;
+    // Generates a warning: converting int from double
     int i = r1 + 0.7;
 }
 

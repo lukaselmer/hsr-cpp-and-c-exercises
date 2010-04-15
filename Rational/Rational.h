@@ -43,14 +43,14 @@ public:
     bool operator>(const Rational&) const;
     bool operator<=(const Rational&) const;
     bool operator>=(const Rational&) const;
-    operator double() const;
+
+    operator double() const; // Very dangerous and probably better like this: "double asDouble() const;"
 
     void print(std::ostream& = std::cout) const;
 
     Rational& abs();
     Rational& chs();
-    // TODO: use gcd (greatest common divisor) for this operation
-    Rational& normalize();
+    Rational& normalize(); // TODO: use gcd (greatest common divisor) for this operation
     Rational& set(const Rational&);
     Rational& setZero();
 
