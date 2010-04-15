@@ -13,9 +13,6 @@
 
 using namespace std;
 
-Rational::Rational() : numerator(0), denumerator(1), negative(false) {
-}
-
 Rational::Rational(numericType _numerator, numericType _denumerator) : numerator(_numerator < 0 ? _numerator * -1 : _numerator),
 denumerator(_denumerator < 0 ? _denumerator * -1 : _denumerator), negative(_numerator < 0 ^ _denumerator < 0) {
     if (denumerator == 0) throw std::invalid_argument("Bad denumerator, division by zero!");
@@ -32,11 +29,6 @@ Rational::Rational(int _numerator) : numerator(numericType(_numerator < 0 ? _num
     if (numerator == 0) setZero();
     normalize();
 }
-
-//Rational::Rational(long _numerator) : numerator(numericType(_numerator < 0 ? _numerator * -1 : _numerator)), denumerator(1), negative(_numerator < 0) {
-//    if (numerator == 0) setZero();
-//    normalize();
-//}
 
 Rational & Rational::additionOrSubtraction(const Rational& r, bool subtraction) {
     if (!r.isZero()) {
