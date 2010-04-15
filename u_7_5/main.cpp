@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Lukas Elmer
  *
- * Created on 3. April 2010, 22:28
+ * Created on 3. April 2010, 16:28
  */
 
 #include "Rational.h"
