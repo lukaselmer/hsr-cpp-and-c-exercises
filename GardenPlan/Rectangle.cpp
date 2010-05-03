@@ -7,12 +7,25 @@
 
 #include "Rectangle.h"
 
-Rectangle::Rectangle(double s1, double s2) {
+Rectangle::Rectangle(double _height, double _width) : height(_height), width(_width) {
 }
 
-Rectangle::Rectangle(const Rectangle& orig) {
-}
+//Rectangle::Rectangle(const Rectangle& orig) {
+//}
 
 Rectangle::~Rectangle() {
 }
+
+int Rectangle::pegs() {
+    return 4;
+}
+
+double Rectangle::surface() {
+    return height * width;
+}
+
+double Rectangle::ropes() {
+    return (height * 2) + (width * 2);
+}
+
 

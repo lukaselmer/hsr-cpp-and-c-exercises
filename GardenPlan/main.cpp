@@ -5,7 +5,20 @@
  * Created on 3. Mai 2010, 19:42
  */
 
-#include <stdlib.h>
+#include <iosfwd>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <string>
+#include <stdexcept>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+#include <functional>
+#include <numeric>
+#include <boost/bind.hpp>
+#include <boost/ref.hpp>
+#include <boost/shared_ptr.hpp>
 #include "Diamond.h"
 #include "GardenPlan.h"
 #include "Shape.h"
@@ -15,26 +28,36 @@
 #include "Rectangle.h"
 
 using namespace std;
+using namespace boost;
 
 void printList(GardenPlan& plan, ostream& os) {
     plan.print(os);
 }
 
+int getPegs(ShapePtr& shapePtr) {
+    return (*shapePtr).pegs();
+}
+
+void printPegs(ShapePtr& shapePtr) {
+    cout << getPegs(shapePtr) << endl;
+}
+
 int sumPegs(GardenPlan& plan) { // Pro Beet so viele Pflöcke wie die geometrische Figur (Shape) Ecken hat
-
-    return 0;
+    vector<int> results(plan.size());
+    transform(plan.begin(), plan.end(), results.begin(), bind(&Shape::pegs, bind(&ShapePtr::operator*, _1)));
+    return accumulate(results.begin(), results.end(), 0);
 }
 
-double sum(GardenPlan& plan, double amount) {
-    return 0;
+double sumSeeds(GardenPlan& plan) { // Pro Beet so viele Pflöcke wie die geometrische Figur (Shape) Ecken hat
+    vector<double> results(plan.size());
+    transform(plan.begin(), plan.end(), results.begin(), bind(&Shape::seeds, bind(&ShapePtr::operator*, _1)));
+    return accumulate<vector<double>::iterator, double>(results.begin(), results.end(), 0);
 }
 
-double addSeeds() { // 0.1kg / Quadratmeter
-    return 0.0;
-}
-
-double addRope() { // Pro Beet benötigen Sie ein Seil in der Länge des Umfangs (m)
-    return 0.0;
+double sumRopes(GardenPlan& plan) { // Pro Beet so viele Pflöcke wie die geometrische Figur (Shape) Ecken hat
+    vector<double> results(plan.size());
+    transform(plan.begin(), plan.end(), results.begin(), bind(&Shape::ropes, bind(&ShapePtr::operator*, _1)));
+    return accumulate<vector<double>::iterator, double>(results.begin(), results.end(), 0);
 }
 
 int main(int argc, char** argv) {
@@ -48,7 +71,21 @@ int main(int argc, char** argv) {
     plan.push_back(ShapePtr(new Rectangle(4, 9)));
     printList(plan, cout);
     cout << "Pegs needed: " << sumPegs(plan) << endl;
-    cout << "Seeds needed: " << sum(plan, addSeeds()) << " kg" << endl;
-    cout << "Rope needed: " << sum(plan, addRope()) << " m" << endl;
+    cout << "Seeds needed: " << sumSeeds(plan) << " kg" << endl;
+    cout << "Rope needed: " << sumRopes(plan) << " m" << endl;
 }
 
+
+//double sum(GardenPlan& plan, double amount) {
+//    vector<double> results(plan.size());
+//    transform(plan.begin(), plan.end(), results.begin(), bind(&Shape::seeds(), bind(&ShapePtr::operator*, _1)));
+//    return accumulate(results.begin(), results.end(), 0);
+//}
+//
+//double addSeeds() { // 0.1kg / Quadratmeter
+//    return 0.0;
+//}
+//
+//double addRope() { // Pro Beet benötigen Sie ein Seil in der Länge des Umfangs (m)
+//    return 0.0;
+//}

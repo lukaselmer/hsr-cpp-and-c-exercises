@@ -22,12 +22,11 @@
 #include <boost/ref.hpp>
 #include "ShapePtr.h"
 
-class GardenPlan {
+class GardenPlan : public std::vector<ShapePtr> {
 public:
     GardenPlan();
     GardenPlan(const GardenPlan& orig);
     virtual ~GardenPlan();
-    void push_back(ShapePtr shapePtr);
     std::ostream& print(std::ostream& os);
 private:
 

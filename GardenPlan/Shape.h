@@ -8,6 +8,7 @@
 #ifndef _SHAPE_H
 #define	_SHAPE_H
 
+#include <sstream>
 #include <iosfwd>
 #include <vector>
 #include <string>
@@ -26,6 +27,11 @@ public:
     Shape();
     Shape(const Shape& orig);
     virtual ~Shape();
+    virtual int pegs() = 0;
+    virtual double surface() = 0;
+    virtual double ropes() = 0;
+    double seeds();
+    std::string toString();
 private:
 
 };

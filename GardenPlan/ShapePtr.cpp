@@ -6,15 +6,14 @@
  */
 
 #include "ShapePtr.h"
+#include "Shape.h"
 
 using namespace std;
 
-ShapePtr::ShapePtr(Shape* shape) {
+ShapePtr::ShapePtr(Shape* _shape) : sharedPointer(_shape) {
 }
 
-ShapePtr::ShapePtr(const ShapePtr& orig) {
-}
-
-ShapePtr::~ShapePtr() {
+Shape& ShapePtr::operator*() {
+    return *sharedPointer;
 }
 

@@ -6,15 +6,25 @@
  */
 
 #include "Triangle.h"
+#include <math.h>
 
 using namespace std;
 
-Triangle::Triangle(double _s1, double _s2, double _s3) {
-}
-
-Triangle::Triangle(const Triangle& orig) {
+Triangle::Triangle(double _side1, double _side2, double _side3) : side1(_side1), side2(_side2), side3(_side3) {
 }
 
 Triangle::~Triangle() {
 }
 
+int Triangle::pegs() {
+    return 3;
+}
+
+double Triangle::surface() { // Heronsche Flächenformel
+    double s = (side1 + side2 + side3) / 2.0;
+    return sqrt(s * (s - side1) * (s - side2) * (s - side3));
+}
+
+double Triangle::ropes() {
+    return side1 + side2 + side3;
+}

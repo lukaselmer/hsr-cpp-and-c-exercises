@@ -20,16 +20,20 @@
 #include <functional>
 #include <boost/bind.hpp>
 #include <boost/ref.hpp>
+#include <boost/shared_ptr.hpp>
 #include "Shape.h"
 
 class ShapePtr {
 public:
-    ShapePtr(Shape* shape);
-    ShapePtr(const ShapePtr& orig);
-    virtual ~ShapePtr();
+    ShapePtr(Shape* _shape);
+    Shape & operator*();
 private:
-
+    boost::shared_ptr<Shape> sharedPointer;
 };
+//
+//std::ostream & operator<<(std::ostream& os, ShapePtr& shapePtr) {
+//    return os;
+//}
 
 #endif	/* _SHAPEPTR_H */
 

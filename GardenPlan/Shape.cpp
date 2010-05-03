@@ -18,3 +18,13 @@ Shape::Shape(const Shape& orig) {
 Shape::~Shape() {
 }
 
+double Shape::seeds() {
+    return surface() * 0.1;
+}
+
+string Shape::toString() {
+    stringstream s;
+    s << typeid (*this).name() + 1 << " " << pegs() << " " << ropes() << " " << seeds();
+    return s.str();
+}
+

@@ -8,27 +8,18 @@
 #ifndef _TRIANGLE_H
 #define	_TRIANGLE_H
 
-#include <iosfwd>
-#include <vector>
-#include <string>
-#include <iostream>
-#include <string>
-#include <stdexcept>
-#include <vector>
-#include <algorithm>
-#include <iterator>
-#include <functional>
-#include <boost/bind.hpp>
-#include <boost/ref.hpp>
 #include "Shape.h"
 
 class Triangle : public Shape {
 public:
-    Triangle(double s1, double s2, double s3);
-    Triangle(const Triangle& orig);
+    Triangle(double _side1, double _side2, double _side3);
+    //    Triangle(const Triangle& orig);
     virtual ~Triangle();
+    virtual int pegs();
+    virtual double surface();
+    virtual double ropes();
 private:
-
+    double side1, side2, side3;
 };
 
 #endif	/* _TRIANGLE_H */

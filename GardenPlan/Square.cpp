@@ -9,12 +9,8 @@
 
 using namespace std;
 
-Square::Square(double s1) {
-}
-
-Square::Square(const Square& orig) {
-}
+//Square::Square(const Square& orig) {
+//}
 
 Square::~Square() {
 }
-

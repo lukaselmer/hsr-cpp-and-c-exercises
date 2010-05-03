@@ -24,11 +24,14 @@
 
 class Rectangle : public Shape {
 public:
-    Rectangle(double s1, double s2);
-    Rectangle(const Rectangle& orig);
+    Rectangle(double _height, double _width);
+    //    Rectangle(const Rectangle& orig);
     virtual ~Rectangle();
+    virtual int pegs();
+    virtual double surface();
+    virtual double ropes();
 private:
-
+    double height, width;
 };
 
 #endif	/* _RECTANGLE_H */
