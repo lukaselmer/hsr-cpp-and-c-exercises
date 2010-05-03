@@ -24,8 +24,6 @@
 
 class Shape {
 public:
-    Shape();
-    Shape(const Shape& orig);
     virtual ~Shape();
     virtual int pegs() = 0;
     virtual double surface() = 0;

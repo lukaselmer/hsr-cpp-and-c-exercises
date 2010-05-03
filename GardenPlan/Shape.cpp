@@ -9,12 +9,6 @@
 
 using namespace std;
 
-Shape::Shape() {
-}
-
-Shape::Shape(const Shape& orig) {
-}
-
 Shape::~Shape() {
 }
 
