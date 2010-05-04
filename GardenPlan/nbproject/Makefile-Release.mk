@@ -31,7 +31,6 @@ OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/ShapePtr.o \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Square.o \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Shape.o \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Rectangle.o \
@@ -65,11 +64,6 @@ LDLIBSOPTIONS=
 dist/Release/MinGW-Windows/gardenplan.exe: ${OBJECTFILES}
 	${MKDIR} -p dist/Release/MinGW-Windows
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gardenplan ${OBJECTFILES} ${LDLIBSOPTIONS} 
-
-${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/ShapePtr.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/ShapePtr.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/ShapePtr.o /E/dev/cpp_projects/GardenPlan/ShapePtr.cpp
 
 ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Square.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/Square.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan

@@ -9,6 +9,9 @@
 #define	_GARDENPLAN_H
 
 #include "ShapePtr.h"
+#include <vector>
+#include <iterator>
+#include <boost/bind.hpp>
 
 class GardenPlan : public std::vector<ShapePtr> {
 public:

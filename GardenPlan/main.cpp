@@ -22,11 +22,11 @@
 #include "Diamond.h"
 #include "GardenPlan.h"
 #include "Shape.h"
-#include "ShapePtr.h"
 #include "Square.h"
 #include "Triangle.h"
 #include "Rectangle.h"
 #include "Circle.h"
+#include "ShapePtr.h"
 
 using namespace std;
 using namespace boost;
@@ -59,6 +59,7 @@ double sumRopes(GardenPlan& plan) { // Pro Beet so viele Pflöcke wie die geomet
     vector<double> results(plan.size());
     transform(plan.begin(), plan.end(), results.begin(), bind(&Shape::ropes, bind(&ShapePtr::operator*, _1)));
     return accumulate<vector<double>::iterator, double>(results.begin(), results.end(), 0);
+    //return accumulate<vector<double>::iterator, double>(results.begin(), results.end(), 0);
 }
 
 int main(int argc, char** argv) {

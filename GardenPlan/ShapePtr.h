@@ -2,24 +2,16 @@
  * File:   ShapePtr.h
  * Author: Lukas Elmer
  *
- * Created on 3. Mai 2010, 19:47
+ * Created on 4. Mai 2010, 09:10
  */
 
 #ifndef _SHAPEPTR_H
 #define	_SHAPEPTR_H
 
-#include <vector>
-#include <iterator>
-#include <boost/bind.hpp>
-#include <boost/shared_ptr.hpp>
 #include "Shape.h"
+#include <boost/shared_ptr.hpp>
 
-class ShapePtr {
-public:
-    ShapePtr(Shape* _shape);
-    Shape & operator*();
-private:
-    boost::shared_ptr<Shape> sharedPointer;
-};
+typedef boost::shared_ptr<Shape> ShapePtr;
 
 #endif	/* _SHAPEPTR_H */
+
