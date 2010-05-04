@@ -8,24 +8,11 @@
 #ifndef _GARDENPLAN_H
 #define	_GARDENPLAN_H
 
-#include <iosfwd>
-#include <vector>
-#include <string>
-#include <iostream>
-#include <string>
-#include <stdexcept>
-#include <vector>
-#include <algorithm>
-#include <iterator>
-#include <functional>
-#include <boost/bind.hpp>
-#include <boost/ref.hpp>
 #include "ShapePtr.h"
 
 class GardenPlan : public std::vector<ShapePtr> {
 public:
     GardenPlan();
-    GardenPlan(const GardenPlan& orig);
     virtual ~GardenPlan();
     std::ostream& print(std::ostream& os);
 private:

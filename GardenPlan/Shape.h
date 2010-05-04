@@ -8,19 +8,7 @@
 #ifndef _SHAPE_H
 #define	_SHAPE_H
 
-#include <sstream>
-#include <iosfwd>
-#include <vector>
 #include <string>
-#include <iostream>
-#include <string>
-#include <stdexcept>
-#include <vector>
-#include <algorithm>
-#include <iterator>
-#include <functional>
-#include <boost/bind.hpp>
-#include <boost/ref.hpp>
 
 class Shape {
 public:

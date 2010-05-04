@@ -5,6 +5,7 @@
  * Created on 3. Mai 2010, 19:48
  */
 
+#include <sstream>
 #include "Shape.h"
 
 using namespace std;

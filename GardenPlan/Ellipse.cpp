@@ -7,7 +7,6 @@
 
 #include <cmath>
 #include "Ellipse.h"
-#include "Square.h"
 
 Ellipse::Ellipse(double _axial_length1, double _axial_length2) : axial_length1(_axial_length1), axial_length2(_axial_length2) {
 }

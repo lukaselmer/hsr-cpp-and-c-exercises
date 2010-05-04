@@ -6,9 +6,6 @@
  */
 
 #include "ShapePtr.h"
-#include "Shape.h"
-
-using namespace std;
 
 ShapePtr::ShapePtr(Shape* _shape) : sharedPointer(_shape) {
 }

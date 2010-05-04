@@ -10,9 +10,6 @@
 Rectangle::Rectangle(double _height, double _width) : height(_height), width(_width) {
 }
 
-//Rectangle::Rectangle(const Rectangle& orig) {
-//}
-
 Rectangle::~Rectangle() {
 }
 

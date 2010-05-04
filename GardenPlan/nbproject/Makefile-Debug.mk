@@ -69,52 +69,52 @@ dist/Debug/MinGW-Windows/gardenplan.exe: ${OBJECTFILES}
 ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/ShapePtr.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/ShapePtr.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/ShapePtr.o /E/dev/cpp_projects/GardenPlan/ShapePtr.cpp
+	$(COMPILE.cc) -g -Wall -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/ShapePtr.o /E/dev/cpp_projects/GardenPlan/ShapePtr.cpp
 
 ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Square.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/Square.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Square.o /E/dev/cpp_projects/GardenPlan/Square.cpp
+	$(COMPILE.cc) -g -Wall -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Square.o /E/dev/cpp_projects/GardenPlan/Square.cpp
 
 ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Shape.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/Shape.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Shape.o /E/dev/cpp_projects/GardenPlan/Shape.cpp
+	$(COMPILE.cc) -g -Wall -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Shape.o /E/dev/cpp_projects/GardenPlan/Shape.cpp
 
 ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Rectangle.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/Rectangle.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Rectangle.o /E/dev/cpp_projects/GardenPlan/Rectangle.cpp
+	$(COMPILE.cc) -g -Wall -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Rectangle.o /E/dev/cpp_projects/GardenPlan/Rectangle.cpp
 
 ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/GardenPlan.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/GardenPlan.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/GardenPlan.o /E/dev/cpp_projects/GardenPlan/GardenPlan.cpp
+	$(COMPILE.cc) -g -Wall -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/GardenPlan.o /E/dev/cpp_projects/GardenPlan/GardenPlan.cpp
 
 ${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -Wall -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Ellipse.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/Ellipse.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Ellipse.o /E/dev/cpp_projects/GardenPlan/Ellipse.cpp
+	$(COMPILE.cc) -g -Wall -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Ellipse.o /E/dev/cpp_projects/GardenPlan/Ellipse.cpp
 
 ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Circle.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/Circle.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Circle.o /E/dev/cpp_projects/GardenPlan/Circle.cpp
+	$(COMPILE.cc) -g -Wall -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Circle.o /E/dev/cpp_projects/GardenPlan/Circle.cpp
 
 ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Triangle.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/Triangle.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Triangle.o /E/dev/cpp_projects/GardenPlan/Triangle.cpp
+	$(COMPILE.cc) -g -Wall -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Triangle.o /E/dev/cpp_projects/GardenPlan/Triangle.cpp
 
 ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Diamond.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/Diamond.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Diamond.o /E/dev/cpp_projects/GardenPlan/Diamond.cpp
+	$(COMPILE.cc) -g -Wall -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Diamond.o /E/dev/cpp_projects/GardenPlan/Diamond.cpp
 
 # Subprojects
 .build-subprojects:

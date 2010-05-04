@@ -13,7 +13,6 @@
 class Triangle : public Shape {
 public:
     Triangle(double _side1, double _side2, double _side3);
-    //    Triangle(const Triangle& orig);
     virtual ~Triangle();
     virtual int pegs();
     virtual double surface();

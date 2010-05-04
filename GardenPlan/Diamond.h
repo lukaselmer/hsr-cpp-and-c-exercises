@@ -13,7 +13,6 @@
 class Diamond : public Shape {
 public:
     Diamond(double _side1, double _side2, double _degrees);
-    //    Diamond(const Diamond& orig);
     virtual ~Diamond();
     virtual int pegs();
     virtual double surface();
