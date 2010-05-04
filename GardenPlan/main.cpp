@@ -26,6 +26,7 @@
 #include "Square.h"
 #include "Triangle.h"
 #include "Rectangle.h"
+#include "Circle.h"
 
 using namespace std;
 using namespace boost;
@@ -72,7 +73,15 @@ int main(int argc, char** argv) {
     printList(plan, cout);
     cout << "Pegs needed: " << sumPegs(plan) << endl;
     cout << "Seeds needed: " << sumSeeds(plan) << " kg" << endl;
+    cout << "Rope needed: " << sumRopes(plan) << " m" << endl << endl;
+
+    plan.push_back(ShapePtr(new Circle(4)));
+    plan.push_back(ShapePtr(new Ellipse(3, 5)));
+    printList(plan, cout);
+    cout << "Pegs needed: " << sumPegs(plan) << endl;
+    cout << "Seeds needed: " << sumSeeds(plan) << " kg" << endl;
     cout << "Rope needed: " << sumRopes(plan) << " m" << endl;
+
 }
 
 

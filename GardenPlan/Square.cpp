@@ -7,10 +7,5 @@
 
 #include "Square.h"
 
-using namespace std;
-
-//Square::Square(const Square& orig) {
-//}
-
 Square::~Square() {
 }

@@ -29,7 +29,6 @@ public:
 
     Square(double _width) : Rectangle(_width, _width) {
     }
-    //Square(const Square& orig);
     virtual ~Square();
 private:
 };

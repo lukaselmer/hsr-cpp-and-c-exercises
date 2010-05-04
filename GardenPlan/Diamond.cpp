@@ -13,10 +13,6 @@ using namespace std;
 Diamond::Diamond(double _side1, double _side2, double _degrees) : side1(_side1), side2(_side2), degrees(_degrees) {
 }
 
-//
-//Diamond::Diamond(const Diamond& orig) {
-//}
-
 Diamond::~Diamond() {
 }
 
