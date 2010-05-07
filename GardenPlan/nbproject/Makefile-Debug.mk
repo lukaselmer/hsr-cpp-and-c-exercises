@@ -35,7 +35,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Shape.o \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Rectangle.o \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/GardenPlan.o \
-	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Ellipse.o \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Circle.o \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Triangle.o \
@@ -59,11 +58,13 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/MinGW-Windows/gardenplan.exe
+	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/MinGW-Windows/libgardenplan.a
 
-dist/Debug/MinGW-Windows/gardenplan.exe: ${OBJECTFILES}
+dist/Debug/MinGW-Windows/libgardenplan.a: ${OBJECTFILES}
 	${MKDIR} -p dist/Debug/MinGW-Windows
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gardenplan ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${RM} dist/Debug/MinGW-Windows/libgardenplan.a
+	${AR} rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libgardenplan.a ${OBJECTFILES} 
+	$(RANLIB) dist/Debug/MinGW-Windows/libgardenplan.a
 
 ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Square.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/Square.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
@@ -84,11 +85,6 @@ ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/GardenPlan.o: nbproject/Makefil
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/GardenPlan.o /E/dev/cpp_projects/GardenPlan/GardenPlan.cpp
-
-${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Ellipse.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/Ellipse.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
@@ -116,7 +112,7 @@ ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Diamond.o: nbproject/Makefile-$
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r build/Debug
-	${RM} dist/Debug/MinGW-Windows/gardenplan.exe
+	${RM} dist/Debug/MinGW-Windows/libgardenplan.a
 
 # Subprojects
 .clean-subprojects:

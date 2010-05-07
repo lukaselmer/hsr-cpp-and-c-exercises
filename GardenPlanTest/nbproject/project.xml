@@ -3,13 +3,15 @@
     <type>org.netbeans.modules.cnd.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>BindTest</name>
+            <name>GardenPlanTest</name>
             <make-project-type>0</make-project-type>
             <c-extensions/>
             <cpp-extensions>cpp</cpp-extensions>
-            <header-extensions/>
+            <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
-            <make-dep-projects/>
+            <make-dep-projects>
+                <make-dep-project>E:/dev/cpp_projects/GardenPlan</make-dep-project>
+            </make-dep-projects>
         </data>
     </configuration>
 </project>

@@ -4,15 +4,6 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Circle.h</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Diamond.h</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Ellipse.h</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/GardenPlan.h</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Rectangle.h</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Shape.h</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/ShapePtr.h</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Square.h</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Triangle.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -21,14 +12,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Circle.cpp</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Diamond.cpp</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Ellipse.cpp</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/GardenPlan.cpp</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Rectangle.cpp</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Shape.cpp</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Square.cpp</itemPath>
-      <itemPath>E:/dev/cpp_projects/GardenPlan/Triangle.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -38,7 +22,7 @@
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="Debug" type="3">
+    <conf name="Debug" type="1">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
         <compilerSet>MinGW|MinGW</compilerSet>
@@ -46,10 +30,16 @@
       </toolsSet>
       <compileType>
         <ccTool>
-          <warningLevel>2</warningLevel>
+          <commandlineTool>g++.exe</commandlineTool>
         </ccTool>
-        <archiverTool>
-        </archiverTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>E:\dev\mingw\bin</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+          </linkerLibItems>
+          <commandLine>--enable-auto-import</commandLine>
+        </linkerTool>
       </compileType>
     </conf>
     <conf name="Release" type="1">

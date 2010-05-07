@@ -17,5 +17,10 @@ double Circle::ropes() {
 }
 
 int Circle::pegs() {
-    return 1;
+    return 2;
+}
+
+double Circle::surface() {
+    const double PI = 4.0 * atan(1.0);
+    return PI * radius * radius;
 }

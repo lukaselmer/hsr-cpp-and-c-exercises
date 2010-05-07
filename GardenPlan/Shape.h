@@ -16,10 +16,8 @@ public:
     virtual int pegs() = 0;
     virtual double surface() = 0;
     virtual double ropes() = 0;
-    double seeds();
+    double seeds(/*double seedsPerSquareMeter = 0.1*/);
     std::string toString();
-private:
-
 };
 
 #endif	/* _SHAPE_H */

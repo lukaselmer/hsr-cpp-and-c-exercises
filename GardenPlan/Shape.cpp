@@ -14,8 +14,8 @@ using namespace std;
 Shape::~Shape() {
 }
 
-double Shape::seeds() {
-    return surface() * 0.1;
+double Shape::seeds(/*double seedsPerSquareMeter*/) {
+    return surface() * 0.1; //  * seedsPerSquareMeter
 }
 
 string Shape::toString() {

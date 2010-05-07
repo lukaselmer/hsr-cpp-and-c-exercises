@@ -8,6 +8,8 @@
 #ifndef _GARDENPLAN_H
 #define	_GARDENPLAN_H
 
+//typedef std::vector<ShapePtr> GardenPlan;
+
 #include "ShapePtr.h"
 #include <vector>
 #include <iterator>

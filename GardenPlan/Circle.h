@@ -8,16 +8,17 @@
 #ifndef _CIRCLE_H
 #define	_CIRCLE_H
 
-#include "Ellipse.h"
+#include "Shape.h"
 
-class Circle : public Ellipse {
+class Circle : public Shape {
 public:
 
-    Circle(double _radius) : Ellipse(_radius, _radius), radius(_radius) {
+    Circle(double _radius) : radius(_radius) {
     }
     virtual ~Circle();
-    virtual double ropes();
     virtual int pegs();
+    virtual double surface();
+    virtual double ropes();
 private:
     double radius;
 };

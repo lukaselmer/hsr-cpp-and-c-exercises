@@ -7,13 +7,13 @@
 # Macros
 TOP=`pwd`
 CND_PLATFORM=MinGW-Windows
-CND_CONF=Debug
+CND_CONF=Release
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libgardenplan.a
-OUTPUT_BASENAME=libgardenplan.a
-PACKAGE_TOP_DIR=GardenPlan/
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testcompile
+OUTPUT_BASENAME=testcompile
+PACKAGE_TOP_DIR=testcompile/
 
 # Functions
 function checkReturnCode
@@ -58,15 +58,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/GardenPlan/bin
+makeDirectory ${TMPDIR}/testcompile/bin
 copyFileToTmpDir "${OUTPUT_PATH}.exe" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}.exe" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/GardenPlan.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/testcompile.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/GardenPlan.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/testcompile.tar *
 checkReturnCode
 
 # Cleanup
