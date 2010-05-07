@@ -8,21 +8,18 @@
 #ifndef _GARDENPLAN_H
 #define	_GARDENPLAN_H
 
-//typedef std::vector<ShapePtr> GardenPlan;
-
 #include "ShapePtr.h"
-#include <vector>
-#include <iterator>
-#include <boost/bind.hpp>
 
-class GardenPlan : public std::vector<ShapePtr> {
-public:
-    GardenPlan();
-    virtual ~GardenPlan();
-    std::ostream& print(std::ostream& os);
-private:
+typedef std::vector<ShapePtr> GardenPlan;
 
-};
+//class GardenPlan : public std::vector<ShapePtr> {
+//public:
+//    GardenPlan();
+//    virtual ~GardenPlan();
+//    std::ostream& print(std::ostream& os);
+//private:
+//
+//};
 
 #endif	/* _GARDENPLAN_H */
 

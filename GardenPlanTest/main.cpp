@@ -25,72 +25,58 @@
 #include "Rectangle.h"
 #include "Circle.h"
 #include "ShapePtr.h"
-#include "tests.h"
+
+#include "cute.h"
+#include "ide_listener.h"
+#include "cute_runner.h"
 
 using namespace std;
 using namespace boost;
 
-void printList(GardenPlan& plan, ostream& os) {
-    plan.print(os);
+using namespace std;
+
+void square() {
+    Square s(3);
 }
 
-int getPegs(ShapePtr& shapePtr) {
-    return (*shapePtr).pegs();
+void rectangle() {
+    Rectangle r(4, 9);
 }
 
-void printPegs(ShapePtr& shapePtr) {
-    cout << getPegs(shapePtr) << endl;
+void triangle() {
+    Triangle t(3, 6, 6.70820393);
 }
 
-struct addPegs {
-    typedef int value_type;
-
-    value_type operator()(value_type i, ShapePtr ptr) {
-        return i + ptr->pegs();
-    }
-};
-
-struct addSeeds {
-    typedef double value_type;
-
-    value_type operator()(value_type i, ShapePtr ptr) {
-        return i + ptr->seeds();
-    }
-};
-
-struct addRope {
-    typedef double value_type;
-
-    value_type operator()(value_type i, ShapePtr ptr) {
-        return i + ptr->ropes();
-    }
-};
-
-template< class F >
-typename F::value_type sum(GardenPlan& plan, F x) {
-    typename F::value_type init = 0;
-    return accumulate(plan.begin(), plan.end(), init, x);
+void diamond() {
+    Diamond d(4, 4, 60);
 }
 
-void runGardenPlan() {
-    GardenPlan plan;
-    plan.push_back(ShapePtr(new Triangle(3, 6, 6.70820393)));
-    plan.push_back(ShapePtr(new Triangle(3, 4, 4)));
-    plan.push_back(ShapePtr(new Triangle(3, 4, 4)));
-    plan.push_back(ShapePtr(new Diamond(4, 4, 60)));
-    plan.push_back(ShapePtr(new Square(3)));
-    plan.push_back(ShapePtr(new Square(3)));
-    plan.push_back(ShapePtr(new Rectangle(4, 9)));
-    printList(plan, cout);
-    cout << "Pegs needed: " << sum(plan, addPegs()) << endl;
-    cout << "Seeds needed: " << sum(plan, addSeeds()) << " kg" << endl;
-    cout << "Rope needed: " << sum(plan, addRope()) << " m" << endl;
-    plan.push_back(ShapePtr(new Circle(4)));
-    plan.push_back(ShapePtr(new Ellipse(3, 5)));
-    printList(plan, cout);
+void circle() {
+    Circle c(1);
+}
+
+void elipse() {
+    Ellipse e(1, 2);
 }
 
 int main(int argc, char** argv) {
-    //runGardenPlan();
-    runTests();
+    cout << "==========================" << endl;
+    cout << "Starting garden plan tests" << endl;
+    cout << "==========================" << endl << endl;
+
+    cute::suite s;
+    s.push_back(CUTE(square));
+    s.push_back(CUTE(rectangle));
+    s.push_back(CUTE(triangle));
+    s.push_back(CUTE(diamond));
+    s.push_back(CUTE(circle));
+    s.push_back(CUTE(elipse));
+    cute::ide_listener lis;
+    cute::makeRunner(lis)(s, "GardenPlan tests:");
+
+    cout << endl << "=====" << endl;
+    cout << "Done!" << endl;
+    cout << "=====" << endl << endl;
+
+    return 0;
 }
