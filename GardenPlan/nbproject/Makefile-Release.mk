@@ -34,7 +34,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Square.o \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Shape.o \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Rectangle.o \
-	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/GardenPlan.o \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Ellipse.o \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Circle.o \
 	${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Triangle.o \
@@ -78,11 +77,6 @@ ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Rectangle.o: nbproject/Makefile
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Rectangle.o /E/dev/cpp_projects/GardenPlan/Rectangle.cpp
-
-${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/GardenPlan.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/GardenPlan.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/GardenPlan.o /E/dev/cpp_projects/GardenPlan/GardenPlan.cpp
 
 ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan/Ellipse.o: nbproject/Makefile-${CND_CONF}.mk /E/dev/cpp_projects/GardenPlan/Ellipse.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/E_/dev/cpp_projects/GardenPlan

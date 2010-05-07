@@ -9,17 +9,9 @@
 #define	_GARDENPLAN_H
 
 #include "ShapePtr.h"
+#include <vector>
 
 typedef std::vector<ShapePtr> GardenPlan;
-
-//class GardenPlan : public std::vector<ShapePtr> {
-//public:
-//    GardenPlan();
-//    virtual ~GardenPlan();
-//    std::ostream& print(std::ostream& os);
-//private:
-//
-//};
 
 #endif	/* _GARDENPLAN_H */
 
