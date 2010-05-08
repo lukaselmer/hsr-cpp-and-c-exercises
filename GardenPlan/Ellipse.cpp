@@ -14,16 +14,16 @@ Ellipse::Ellipse(double _axial_length1, double _axial_length2) : axial_length1(_
 Ellipse::~Ellipse() {
 }
 
-int Ellipse::pegs() {
+int Ellipse::pegs() const {
     return 2;
 }
 
-double Ellipse::surface() {
+double Ellipse::surface() const {
     const double PI = 4.0 * atan(1.0);
     return PI * axial_length1 * axial_length2;
 }
 
-double Ellipse::ropes() {
+double Ellipse::ropes() const {
     const double PI = 4.0 * atan(1.0);
     double fi = (axial_length1 - axial_length2) / (axial_length1 + axial_length2);
     return PI * (axial_length1 + axial_length2) * (1 + ((3 * fi * fi) / (10 + sqrt(4 - (3 * fi * fi)))));

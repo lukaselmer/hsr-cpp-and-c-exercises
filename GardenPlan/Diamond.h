@@ -14,9 +14,9 @@ class Diamond : public Shape {
 public:
     Diamond(double _side1, double _side2, double _degrees);
     virtual ~Diamond();
-    virtual int pegs();
-    virtual double surface();
-    virtual double ropes();
+    virtual int pegs() const;
+    virtual double surface() const;
+    virtual double ropes() const;
 private:
     double side1, side2, degrees;
 };

@@ -13,11 +13,11 @@
 class Shape {
 public:
     virtual ~Shape();
-    virtual int pegs() = 0;
-    virtual double surface() = 0;
-    virtual double ropes() = 0;
-    double seeds(/*double seedsPerSquareMeter = 0.1*/);
-    std::string toString();
+    virtual int pegs() const = 0;
+    virtual double surface() const = 0;
+    virtual double ropes() const = 0;
+    double seeds(/*double seedsPerSquareMeter = 0.1*/) const;
+    std::string toString() const;
 };
 
 #endif	/* _SHAPE_H */

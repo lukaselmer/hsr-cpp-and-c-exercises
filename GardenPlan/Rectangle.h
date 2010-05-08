@@ -14,9 +14,9 @@ class Rectangle : public Shape {
 public:
     Rectangle(double _height, double _width);
     virtual ~Rectangle();
-    virtual int pegs();
-    virtual double surface();
-    virtual double ropes();
+    virtual int pegs() const;
+    virtual double surface() const;
+    virtual double ropes() const;
 private:
     double height, width;
 };

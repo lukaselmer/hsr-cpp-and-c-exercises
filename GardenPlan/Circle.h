@@ -16,9 +16,9 @@ public:
     Circle(double _radius) : radius(_radius) {
     }
     virtual ~Circle();
-    virtual int pegs();
-    virtual double surface();
-    virtual double ropes();
+    virtual int pegs() const;
+    virtual double surface() const;
+    virtual double ropes() const;
 private:
     double radius;
 };

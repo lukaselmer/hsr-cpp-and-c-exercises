@@ -14,9 +14,9 @@ class Ellipse : public Shape {
 public:
     Ellipse(double _axial_length1, double _axial_length2);
     virtual ~Ellipse();
-    virtual int pegs();
-    virtual double surface();
-    virtual double ropes();
+    virtual int pegs() const;
+    virtual double surface() const;
+    virtual double ropes() const;
 private:
     double axial_length1, axial_length2;
 };

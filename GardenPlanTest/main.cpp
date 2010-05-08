@@ -22,8 +22,6 @@
 using namespace std;
 using namespace boost;
 
-using namespace std;
-
 void square() {
     Square s(3);
     //printf("\n%.18f\n\n", d.surface());

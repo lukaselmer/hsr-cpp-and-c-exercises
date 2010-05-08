@@ -11,16 +11,16 @@
 Circle::~Circle() {
 }
 
-double Circle::ropes() {
+double Circle::ropes() const {
     const double PI = 4.0 * atan(1.0);
     return 2 * PI * radius;
 }
 
-int Circle::pegs() {
+int Circle::pegs() const {
     return 2;
 }
 
-double Circle::surface() {
+double Circle::surface() const {
     const double PI = 4.0 * atan(1.0);
     return PI * radius * radius;
 }

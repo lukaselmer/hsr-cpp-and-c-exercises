@@ -14,9 +14,9 @@ class Triangle : public Shape {
 public:
     Triangle(double _side1, double _side2, double _side3);
     virtual ~Triangle();
-    virtual int pegs();
-    virtual double surface();
-    virtual double ropes();
+    virtual int pegs() const;
+    virtual double surface() const;
+    virtual double ropes() const;
 private:
     double side1, side2, side3;
 };

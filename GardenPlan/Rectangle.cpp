@@ -13,15 +13,15 @@ Rectangle::Rectangle(double _height, double _width) : height(_height), width(_wi
 Rectangle::~Rectangle() {
 }
 
-int Rectangle::pegs() {
+int Rectangle::pegs() const {
     return 4;
 }
 
-double Rectangle::surface() {
+double Rectangle::surface() const {
     return height * width;
 }
 
-double Rectangle::ropes() {
+double Rectangle::ropes() const {
     return (height * 2) + (width * 2);
 }
 
