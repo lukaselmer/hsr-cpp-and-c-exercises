@@ -37,8 +37,27 @@ public:
     typedef ptrdiff_t difference_type;
     typedef typename _Base::allocator_type allocator_type;
 
-    MyVector() {
-        vec = std::vector<_Tp > ();
+    explicit
+    MyVector(const allocator_type& __a = allocator_type()) {
+        vec = std::vector<_Tp > (__a);
+    }
+
+    MyVector(size_type __n, const value_type& __value, const allocator_type& __a = allocator_type()) {
+        vec = std::vector<_Tp > (__n, __value, __a);
+    }
+
+    explicit
+    MyVector(size_type __n) {
+        vec = std::vector<_Tp > (__n);
+    }
+
+    MyVector(const MyVector& __x) {
+        vec = std::vector<_Tp > (__x.vec);
+    }
+
+    template<typename _InputIterator>
+    MyVector(_InputIterator __first, _InputIterator __last, const allocator_type& __a = allocator_type()) {
+        vec = std::vector<_Tp, _InputIterator > (__first, __last, __a);
     }
 
     virtual ~MyVector() {
