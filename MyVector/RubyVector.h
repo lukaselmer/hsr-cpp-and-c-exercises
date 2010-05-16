@@ -11,17 +11,18 @@
 
 #include <vector>
 
+#include <bits/stl_iterator_base_funcs.h>
+
 using namespace std;
 
 template <typename _Tp, typename _Alloc = allocator<_Tp> >
-        class MyVector {
+        class RubyVector {
 public:
 
     __glibcxx_class_requires(_Tp, _SGIAssignableConcept)
 
     typedef _Vector_base<_Tp, _Alloc> _Base;
     typedef vector<_Tp, _Alloc> vector_type;
-
 
     typedef _Tp value_type;
     typedef size_t size_type;
@@ -38,30 +39,30 @@ public:
     typedef typename _Base::allocator_type allocator_type;
 
     explicit
-    MyVector(const allocator_type& __a = allocator_type()) {
+    RubyVector(const allocator_type& __a = allocator_type()) {
         vec = std::vector<_Tp > (__a);
     }
 
-    MyVector(size_type __n, const value_type& __value, const allocator_type& __a = allocator_type()) {
+    RubyVector(size_type __n, const value_type& __value, const allocator_type& __a = allocator_type()) {
         vec = std::vector<_Tp > (__n, __value, __a);
     }
 
     explicit
-    MyVector(size_type __n) {
+    RubyVector(size_type __n) {
         vec = std::vector<_Tp > (__n);
     }
 
-    MyVector(const MyVector& __x) {
+    RubyVector(const RubyVector& __x) {
         vec = std::vector<_Tp > (__x.vec);
     }
 
     template<typename _InputIterator>
-    MyVector(_InputIterator __first, _InputIterator __last, const allocator_type& __a = allocator_type()) {
-        vec = std::vector<_Tp, _InputIterator > (__first, __last, __a);
+    RubyVector(_InputIterator __first, _InputIterator __last, const allocator_type& __a = allocator_type()) {
+        vec = std::vector<_Tp > (__first, __last, __a);
     }
 
-    virtual ~MyVector() {
-    }
+    //virtual ~RubyVector() {
+    //}
 
     void
     assign(size_type __n, const value_type& __val) {
@@ -231,7 +232,7 @@ public:
     }
 
     void
-    swap(MyVector& __x) {
+    swap(RubyVector& __x) {
         return vec.swap(__x);
     }
 
