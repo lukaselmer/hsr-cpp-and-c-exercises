@@ -1,42 +1,30 @@
 /* 
- * File:   MyVector.h
+ * File:   RubyVector.h
  * Author: Lukas Elmer
  *
  * Created on 14. Mai 2010, 12:01
  */
 
-#ifndef _MYVECTOR_H
-#define	_MYVECTOR_H
-
+#ifndef _RUBYVECTOR_H
+#define	_RUBYVECTOR_H
 
 #include <vector>
 
-#include <bits/stl_iterator_base_funcs.h>
-
-using namespace std;
-
-template <typename _Tp, typename _Alloc = allocator<_Tp> >
+template <typename _Tp, typename _Alloc = std::allocator<_Tp> >
         class RubyVector {
 public:
-
-    __glibcxx_class_requires(_Tp, _SGIAssignableConcept)
-
-    typedef _Vector_base<_Tp, _Alloc> _Base;
-    typedef vector<_Tp, _Alloc> vector_type;
-
-    typedef _Tp value_type;
-    typedef size_t size_type;
-    typedef typename _Alloc::pointer pointer;
-    typedef typename _Alloc::const_pointer const_pointer;
-    typedef typename _Alloc::reference reference;
-    typedef typename _Alloc::const_reference const_reference;
-    typedef __gnu_cxx::__normal_iterator<pointer, vector_type> iterator;
-    typedef __gnu_cxx::__normal_iterator<const_pointer, vector_type>
-    const_iterator;
-    typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
-    typedef std::reverse_iterator<iterator> reverse_iterator;
-    typedef ptrdiff_t difference_type;
-    typedef typename _Base::allocator_type allocator_type;
+    typedef typename std::vector<_Tp>::value_type value_type;
+    typedef typename std::vector<_Tp>::size_type size_type;
+    typedef typename std::vector<_Tp>::pointer pointer;
+    typedef typename std::vector<_Tp>::const_pointer const_pointer;
+    typedef typename std::vector<_Tp>::reference reference;
+    typedef typename std::vector<_Tp>::const_reference const_reference;
+    typedef typename std::vector<_Tp>::iterator iterator;
+    typedef typename std::vector<_Tp>::const_iterator const_iterator;
+    typedef typename std::vector<_Tp>::const_reverse_iterator const_reverse_iterator;
+    typedef typename std::vector<_Tp>::reverse_iterator reverse_iterator;
+    typedef typename std::vector<_Tp>::difference_type difference_type;
+    typedef typename std::vector<_Tp>::allocator_type allocator_type;
 
     explicit
     RubyVector(const allocator_type& __a = allocator_type()) {
@@ -53,16 +41,13 @@ public:
     }
 
     RubyVector(const RubyVector& __x) {
-        vec = std::vector<_Tp > (__x.vec);
+        vec = std::vector<_Tp > (__x);
     }
 
     template<typename _InputIterator>
     RubyVector(_InputIterator __first, _InputIterator __last, const allocator_type& __a = allocator_type()) {
         vec = std::vector<_Tp > (__first, __last, __a);
     }
-
-    //virtual ~RubyVector() {
-    //}
 
     void
     assign(size_type __n, const value_type& __val) {
@@ -152,14 +137,12 @@ public:
 
     reference
     operator[](long __n) {
-        if (__n < 0) __n += size();
-        return vec.at(__n);
+        return at(__n);
     }
 
     const_reference
     operator[](long __n) const {
-        if (__n < 0) __n += size();
-        return vec.at(__n);
+        return at(__n);
     }
 
     reference
@@ -246,6 +229,5 @@ private:
 };
 
 
-
-#endif	/* _MYVECTOR_H */
+#endif	/* _RUBYVECTOR_H */
 
