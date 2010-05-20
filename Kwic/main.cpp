@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Lukas Elmer
  *
- * Created on 17. Mai 2010, 00:48
+ * Created on 14. Mai 2010, 14:48
  */
 
 #include <stdlib.h>
