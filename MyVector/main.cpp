@@ -16,9 +16,6 @@
 #include "ide_listener.h"
 #include "cute_runner.h"
 
-/*
- * 
- */
 using namespace std;
 
 template <typename T>
