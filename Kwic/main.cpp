@@ -5,13 +5,12 @@
  * Created on 14. Mai 2010, 14:48
  */
 
-#include <stdlib.h>
 #include <string>
 #include <vector>
-#include <boost/algorithm/string.hpp>
 #include <iostream>
-#include <boost/bind.hpp>
 #include <iterator>
+#include <boost/bind.hpp>
+#include <boost/algorithm/string.hpp>
 
 using namespace std;
 
