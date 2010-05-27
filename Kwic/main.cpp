@@ -11,6 +11,7 @@
 #include <boost/algorithm/string.hpp>
 #include <iostream>
 #include <boost/bind.hpp>
+#include <iterator>
 
 using namespace std;
 
@@ -43,9 +44,12 @@ bool cmp_str(string a, string b) {
 
 int main(int argc, char** argv) {
     vector<string> vec;
-    vec.push_back("Das ist noch ein Test");
-    vec.push_back("Das ist ein Test");
-    vec.push_back("Blablii blablaa blabub");
+
+    string line;
+    while (getline(cin, line)) {
+        if (line == "") break;
+        vec.push_back(line);
+    }
 
     vector<vector<string> > vv(vec.size());
     transform(vec.begin(), vec.end(), vv.begin(), split_spaces);
@@ -58,4 +62,3 @@ int main(int argc, char** argv) {
 
     return (EXIT_SUCCESS);
 }
-
