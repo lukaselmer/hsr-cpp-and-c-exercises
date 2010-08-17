@@ -1,10 +1,3 @@
-/* 
- * File:   main.cpp
- * Author: Lukas Elmer
- *
- * Created on 14. Mai 2010, 14:48
- */
-
 #include <string>
 #include <vector>
 #include <iostream>
@@ -32,7 +25,8 @@ void make_variety(vector<string> & unordered_results, vector<string> & tmp_varie
 
 void make_varieties(vector<string> & unordered_results, vector<string> initial_variety) {
     vector<string> tmp_variety = initial_variety;
-    for_each(initial_variety.begin(), initial_variety.end(), bind(make_variety, boost::ref(unordered_results), boost::ref(tmp_variety), _1));
+    for_each(initial_variety.begin(), initial_variety.end(),
+            bind(make_variety, boost::ref(unordered_results), boost::ref(tmp_variety), _1));
 }
 
 bool cmp_str(string a, string b) {
