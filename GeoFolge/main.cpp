@@ -9,6 +9,7 @@ using namespace boost;
 
 int main(int argc, char** argv) {
     // Speichere 0.5^0 - 0.5^20 ung gebe sie aus
+    // ACHTUNG: Zählt nur bis 20, nicht bis 21!!!!
     vector<double> v(GeoFolge(0.5, 0), GeoFolge(21));
     copy(v.begin(), v.end(), ostream_iterator<double>(cout, "\n"));
 
@@ -17,7 +18,7 @@ int main(int argc, char** argv) {
     transform(v.begin(), v.end(), v2.begin(), bind(divides<double>(), 1, _1));
     copy(v2.begin(), v2.end(), ostream_iterator<double>(cout, "\n"));
 
-    // Multipliziere und gebe aus
+    // Multipliziere beide vektoren miteinander und gebe sie aus
     vector<double> v3(v.size());
     transform(v.begin(), v.end(), v2.begin(), v3.begin(), multiplies<double>());
     cout << fixed;

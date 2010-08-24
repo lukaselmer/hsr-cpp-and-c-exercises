@@ -7,11 +7,8 @@ class GeoFolge : public boost::bidirectional_iterator_helper<GeoFolge, double> {
 public:
 
     GeoFolge(value_type _base, int start_pos) : base(_base), exponent(1), current_value(_base) {
-        if (exponent < start_pos) {
-            while (exponent < start_pos) operator++();
-        } else {
-            while (exponent > start_pos) operator--();
-        }
+        while (exponent < start_pos) operator++();
+        while (exponent > start_pos) operator--();
     }
 
     GeoFolge(int end) : base(0), exponent(end), current_value(0) {
