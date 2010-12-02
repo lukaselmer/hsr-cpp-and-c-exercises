@@ -11,6 +11,7 @@
 #include <fstream>
 #include <cerrno>
 #include <stdlib.h>
+#include <vector>
 
 class SocketIO {
 public:
@@ -20,18 +21,21 @@ public:
     SocketIO(int fd);
     virtual ~SocketIO();
     std::string readline();
+    std::string readlines();
     void writeN(const char *buf, int len);
     void doClose();
     std::string getPeerInfo();
 private:
     int sock; // socket file descriptor
     char buf[BUF_SIZE]; // a bit stupid way to mimick an istream
-    char *writePtr;
-    char *readPtr;
-    const char *endPtr;
+    std::string lines;
+        char *writePtr;
+        char *readPtr;
+        char *endPtr;
+        //const char *endPtr;
 
-    bool fillbuf();
-    int getc();
+        bool fillbuf();
+        int getc();
 };
 
 #endif	/* SOCKETIO_H */

@@ -15,18 +15,30 @@
 using namespace std;
 
 string getHeaders(int len) {
-    return "";
+    //return "";
     stringstream ss;
-    ss << "HTTP/1.1 200 OK\r\n";
-    ss << "Date: Mon, 23 May 2005 22:38:34 GMT\r\n";
-    ss << "Server: Apache/1.3.3.7 (Unix) (Red-Hat/Linux)\r\n";
-    ss << "Last-Modified: Wed, 08 Jan 2003 23:11:55 GMT\r\n";
-    ss << "Etag: \"3f80f-1b6-3e1cb03b\"\r\n";
-    ss << "Accept-Ranges: bytes\r\n";
-    ss << "Content-Length: " << len << "\r\n";
-    ss << "Connection: close\r\n";
-    ss << "Content-Type: text/html; charset=UTF-8\r\n";
+    ss << "HTTP/1.1 200 OK\n";
+    ss << "\n";
+    //ss << "HTTP/1.1 200 OK\r\n";
+    //ss << "Date: Mon, 23 May 2005 22:38:34 GMT\r\n";
+    //ss << "Server: LukesServer/0.0.0.1 (Unix) (Windows/NT6.1)\r\n";
+    //ss << "Last-Modified: Wed, 08 Jan 2003 23:11:55 GMT\r\n";
+    //ss << "Etag: \"3f80f-1b6-3e1cb03b\"\r\n";
+    //ss << "Accept-Ranges: bytes\r\n";
+    //ss << "Content-Length: " << len << "\r\n";
+    //ss << "Connection: close\r\n";
+    //ss << "Content-Type: text/html\r\n";
+    //ss << "Content-Type: text/html; charset=UTF-8\r\n";
     return ss.str();
+}
+
+string generateResponse(string request, int counter) {
+    stringstream ss1, ss2;
+    ss1 << "<html><head></head><body><h1>Dum di dum</h1>This is request #" << counter << "." <<
+            "<br/>The request was:" <<
+            "<pre>" << request << "</pre></body></html>\n";
+    ss2 << getHeaders(ss1.str().length()) << ss1.str();
+    return ss2.str();
 }
 
 int main(int argc, char**argv) {
@@ -45,18 +57,25 @@ int main(int argc, char**argv) {
     while (!quit) {
         ++counter;
         int clientfd = ss.doAccept();
+        //if (fork()) {
         cout << "Starting request...";
-        if (clientfd < 0) continue; // retry
+        if (clientfd < 0) {
+            cout << "connection failed!" << endl;
+            exit(0);
+            //continue; // retry
+        }
         SocketIO sio(clientfd);
 
-        stringstream ss1, ss2;
-        ss1 << "<html><head></head><body><h1>Huuuhuuu</h1><pre>yeah yeah, this is request #" << counter << "!</pre></body></html>\r\n";
-        ss2 << getHeaders(ss1.str().length()) << ss1.str();
-        string reply = ss2.str();
+        string lines_received = sio.readlines();
+        cout << lines_received << endl;
+        string reply = generateResponse(lines_received, counter);
         sio.writeN(reply.c_str(), reply.length());
         sio.doClose();
 
         cout << " done!" << endl;
+        exit;
+        //}
+        cout << "server continues listening..." << endl;
     }
     ss.doClose();
     return 0;
