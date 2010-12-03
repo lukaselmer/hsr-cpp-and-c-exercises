@@ -4,7 +4,7 @@
 
 using namespace std;
 
-ServerSocket::ServerSocket(unsigned short p) : sockfd(socket(AF_INET, SOCK_STREAM, 0)), port(p) {
+ServerSocket::ServerSocket(unsigned short p) : sockfd(0), port(p) {
 }
 
 ServerSocket::~ServerSocket() {
@@ -12,6 +12,13 @@ ServerSocket::~ServerSocket() {
 }
 
 bool ServerSocket::prepareServerSocket() {
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    //set reuse socket opt
+    char x = 1;
+    if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (const char*) &x, sizeof (x))) {
+        return false;
+    }
+
     struct sockaddr_in sa;
     sa.sin_family = AF_INET;
     sa.sin_port = htons(port);
@@ -49,6 +56,7 @@ int ServerSocket::doAccept() {
 
 void ServerSocket::doClose() {
     if (sockfd >= 0) {
+        shutdown(sockfd, SHUT_RDWR);
         close(sockfd);
     }
     sockfd = -1;

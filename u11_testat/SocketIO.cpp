@@ -23,18 +23,27 @@ string SocketIO::readlines() {
 }
 
 void SocketIO::writeN(const char *buf, int len) {
-    cout << " write: " << write(sock, buf, len) << " chars of " << len << ": " << endl << buf << "...";
+    cout << endl << "Writing: " << write(sock, buf, len) << " chars of " << len << ": " << endl << "******" << endl << buf << endl << "******" << endl;
 }
 
 void SocketIO::doClose() {
     if (sock >= 0) {
+        shutdown(sock, SHUT_RDWR);
         close(sock);
     }
     sock = -1;
 }
 
 string SocketIO::getPeerInfo() {
-    // TODO: implement this
+    struct sockaddr_in peerInfo;
+    socklen_t len = sizeof (peerInfo);
+    if (getpeername(sock, (struct sockaddr*) &peerInfo, &len) != 0) {
+        return "Error";
+    }
+    stringstream ss;
+    ss << inet_ntoa(peerInfo.sin_addr) << ":";
+    ss << ntohs(peerInfo.sin_port);
+    return ss.str();
 }
 
 bool SocketIO::fillbuf() { // corresponds to streambuf::underflow()
