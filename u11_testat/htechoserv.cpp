@@ -16,27 +16,13 @@
 
 using namespace std;
 
-//void childTerminated(int sig_num) {
-//    int child_status;
-//    wait(&child_status);
-//    if (child_status > 0) exit(0);
-//}
-
-static bool quit = false;
-
 string getHeaders(int len) {
-    //return "";
     stringstream ss;
     ss << "HTTP/1.1 200 OK\n";
-    //ss << "Date: Mon, 23 May 2005 22:38:34 GMT\n";
-    ss << "Server: LukesServer/0.0.0.1 (Unix) (Windows/NT6.1)\n";
-    //ss << "Last-Modified: Wed, 08 Jan 2003 23:11:55 GMT\n";
-    //ss << "Etag: \"3f80f-1b6-3e1cb03b\"\n";
-    //ss << "Accept-Ranges: bytes\n";
+    ss << "Server: LukesC++Server\n";
     ss << "Content-Length: " << len << "\n";
     ss << "Connection: close\n";
     ss << "Content-Type: text/html\n";
-    //ss << "Content-Type: text/html; charset=UTF-8\n";
     ss << "\n";
     return ss.str();
 }
@@ -45,10 +31,11 @@ bool quitRequested(string request) {
     return request.find("GET /quit HTTP/1.1\r\n", 0) == 0 || request.find("GET /quit HTTP/1.1\n", 0) == 0;
 }
 
-string generateResponse(string request, int counter) {
+string generateResponse(string request, string clintinfo, int counter) {
     stringstream ss1, ss2;
-    ss1 << "<html><head></head><body><h1>Dum di dum</h1>This is request #" << counter << "." <<
-            "<br/>The request was:" <<
+    ss1 << "<html><head></head><body><h1>Hello <i>" << clintinfo << "</i></h1>" <<
+            "<div>This is request <b>#" << counter << "</b>.</div>" <<
+            "<div>This is your request:</div>" <<
             "<pre>" << request << "</pre>" <<
             "</body></html>\n";
     ss2 << getHeaders(ss1.str().length()) << ss1.str();
@@ -56,7 +43,6 @@ string generateResponse(string request, int counter) {
 }
 
 int main(int argc, char**argv) {
-    //signal(SIGCHLD, childTerminated);
     if (argc < 2) {
         cerr << argv[0] << ": port" << endl;
         return 1;
@@ -68,27 +54,31 @@ int main(int argc, char**argv) {
         return 2;
     }
     int counter = 0;
+    bool quit = false;
     while (!quit) {
         ++counter;
         cout << "Server is listening and waiting for accept..." << endl;
+
+        // TODO: This is blocking unless the current connection is closed! How can it be fixed???
         int clientfd = ss.doAccept();
+
         cout << "Request started..." << endl;
         if (clientfd < 0) {
             cout << "connection failed!" << endl;
             exit(1);
-            //continue; // retry
         }
 
         pid_t parentId = getpid();
-        if (!fork()) {
+        if (!fork()) { // Child process
+            ss.doClose();
             SocketIO sio(clientfd);
+            cout << "Connected to " << sio.getPeerInfo() << endl;
             string lines_received = sio.readlines();
             if (quitRequested(lines_received)) {
                 cout << endl << endl;
                 quit = true;
             }
-            //cout << lines_received << endl;
-            string reply = generateResponse(lines_received, counter);
+            string reply = generateResponse(lines_received, sio.getPeerInfo(), counter);
             sleep(5);
             sio.writeN(reply.c_str(), reply.length());
             sio.doClose();
@@ -101,8 +91,9 @@ int main(int argc, char**argv) {
                 kill(parentId, SIGINT);
             }
             exit(0);
-        } else {
+        } else { // Main process
             close(clientfd);
+            //sio.doClose();
         }
     }
     ss.doClose();

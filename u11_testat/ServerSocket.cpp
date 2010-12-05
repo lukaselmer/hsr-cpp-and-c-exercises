@@ -44,14 +44,6 @@ int ServerSocket::doAccept() {
         return -1;
     }
     return clientfd;
-    //int theport = 0;
-    //    string ip = getSa(clientfd, theport, getpeername);
-    //    cout << "client on fd = " << clientfd << " from = " << ip << " at port = " << theport << endl;
-    //    ip = getSa(clientfd, theport, getsockname);
-    //    cout << "myself at = " << ip << " at port = " << theport << endl;
-    //    ip = getSa(sockfd, theport, getsockname);
-    //    cout << "myself accepting on fd=" << sockfd << " at = " << ip << " at port = " << theport << endl;
-    //close(clientfd);
 }
 
 void ServerSocket::doClose() {

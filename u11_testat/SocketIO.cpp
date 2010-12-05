@@ -2,15 +2,11 @@
 
 using namespace std;
 
-SocketIO::SocketIO(int fd) : sock(fd), writePtr(buf), readPtr(buf), endPtr(buf + sizeof (buf)), eof_reached(true) {
+SocketIO::SocketIO(int fd) : sock(fd), /*writePtr(buf), readPtr(buf), endPtr(buf + sizeof (buf)),*/ eof_reached(true) {
 }
 
 SocketIO::~SocketIO() {
     this->doClose();
-}
-
-string SocketIO::readline() {
-    return "";
 }
 
 string SocketIO::readlines() {
@@ -55,8 +51,4 @@ bool SocketIO::fillbuf() { // corresponds to streambuf::underflow()
     eof_reached = (i == 0);
     lines = string(buf, buf + i);
     return true;
-}
-
-int SocketIO::getc() {
-    return 0;
 }

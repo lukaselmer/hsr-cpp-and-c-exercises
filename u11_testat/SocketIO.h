@@ -20,7 +20,7 @@ public:
 
     SocketIO(int fd);
     virtual ~SocketIO();
-    std::string readline();
+    //std::string readline();
     std::string readlines();
     void writeN(const char *buf, int len);
     void doClose();
@@ -29,13 +29,13 @@ private:
     int sock; // socket file descriptor
     char buf[BUF_SIZE]; // a bit stupid way to mimick an istream
     std::string lines;
-        char *writePtr;
-        char *readPtr;
-        char *endPtr;
-        //const char *endPtr;
+    //    char *writePtr;
+    //    char *readPtr;
+    //    char *endPtr;
+    //const char *endPtr;
 
-        bool fillbuf();
-        int getc();
+    bool fillbuf();
+    //    int getc();
 };
 
 #endif	/* SOCKETIO_H */
