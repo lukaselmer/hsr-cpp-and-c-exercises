@@ -25,6 +25,7 @@ public:
     void writeN(const char *buf, int len);
     void doClose();
     std::string getPeerInfo();
+    void closeReadSocket();
 private:
     int sock; // socket file descriptor
     char buf[BUF_SIZE]; // a bit stupid way to mimick an istream

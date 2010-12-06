@@ -21,6 +21,7 @@ public:
     bool prepareServerSocket();
     int doAccept();
     void doClose();
+    bool setSocketOptions();
 private:
     int sockfd;
     unsigned short port;

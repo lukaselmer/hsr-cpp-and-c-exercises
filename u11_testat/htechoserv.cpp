@@ -37,7 +37,9 @@ string generateResponse(string request, string clintinfo, int counter) {
             "<div>This is request <b>#" << counter << "</b>.</div>" <<
             "<div>This is your request:</div>" <<
             "<pre>" << request << "</pre>" <<
-            "</body></html>\n";
+            "<form action=\"input_file.htm\" method=\"post\" enctype=\"multipart/form-data\">" <<
+            "File upload test: <input name=\"Datei\" type=\"file\" /><input type=\"submit\" />" <<
+            "</form>" << "</body></html>\n";
     ss2 << getHeaders(ss1.str().length()) << ss1.str();
     return ss2.str();
 }
@@ -74,16 +76,17 @@ int main(int argc, char**argv) {
             SocketIO sio(clientfd);
             cout << "Connected to " << sio.getPeerInfo() << endl;
             string lines_received = sio.readlines();
+            sio.closeReadSocket();
             if (quitRequested(lines_received)) {
                 cout << endl << endl;
                 quit = true;
             }
             string reply = generateResponse(lines_received, sio.getPeerInfo(), counter);
-            sleep(5);
+            //sleep(5);
             sio.writeN(reply.c_str(), reply.length());
             sio.doClose();
 
-            cout << "Request done!" << endl << endl;
+            cout << "*** Request done ***" << endl << endl;
             if (quit) {
                 cout << "******************************" << endl;
                 cout << "* SERVER IS SHUTTING DOWN!!! *" << endl;

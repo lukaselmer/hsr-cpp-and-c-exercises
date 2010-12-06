@@ -11,11 +11,22 @@ ServerSocket::~ServerSocket() {
     doClose();
 }
 
+bool ServerSocket::setSocketOptions() {
+    char x = 1;
+    if (setsockopt(sockfd, SOL_SOCKET, SO_KEEPALIVE, (const char*) &x, sizeof (x)) == -1) {
+        return false;
+    }
+    //set reuse socket opt
+    if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (const char*) &x, sizeof (x)) == -1) {
+        return false;
+    }
+    return true;
+}
+
 bool ServerSocket::prepareServerSocket() {
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    //set reuse socket opt
     char x = 1;
-    if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (const char*) &x, sizeof (x))) {
+    if (!setSocketOptions()) {
         return false;
     }
 
