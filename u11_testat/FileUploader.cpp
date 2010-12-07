@@ -8,11 +8,19 @@
 #include <iterator>
 #include <fstream>
 #include <stdlib.h>
+#include <sstream>
 #include "FileUploader.h"
 
 using namespace std;
 
-FileUploader::FileUploader(string request) {
+FileUploader::FileUploader() : file_upload_path("file_uploads") {
+    system(string("mkdir " + file_upload_path).c_str());
+}
+
+FileUploader::~FileUploader() {
+}
+
+void FileUploader::upload(string request) {
     string file_upload_header("Content-Type: multipart/form-data; boundary=");
     int index = request.find(file_upload_header, 0);
     cout << index << endl << endl << endl;
@@ -25,12 +33,9 @@ FileUploader::FileUploader(string request) {
         int begin_of_boundary_data = request.find(boundary, begin_of_boundary_index + boundary.length()) + boundary.length() + seperator.length();
         int end_of_boundary_data = request.find(boundary, begin_of_boundary_data + 1) - seperator.length() - seperator.length();
         string raw_file_with_header(request.begin() + begin_of_boundary_data, request.begin() + end_of_boundary_data);
-        file = UploadFile(raw_file_with_header);
+        UploadFile(file_upload_path, raw_file_with_header); // uploadedFiles <<
     } else {
         //cout << "No file uploaded" << index << endl;
     }
-}
-
-FileUploader::~FileUploader() {
 }
 

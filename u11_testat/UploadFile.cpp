@@ -11,16 +11,16 @@
 #include <iostream>
 #include <iterator>
 #include <stdlib.h>
+#include <sstream>
 
 #include "UploadFile.h"
 
 using namespace std;
 
-UploadFile::UploadFile() : file_name(""), file_raw(""), file_with_header("") {
+UploadFile::UploadFile() : file_upload_path(""), file_name(""), file_raw(""), file_with_header("") {
 }
 
-UploadFile::UploadFile(string _file_with_header) : file_name(""), file_raw(""), file_with_header("") {
-    file_with_header = _file_with_header;
+UploadFile::UploadFile(string _file_upload_path, string _file_with_header) : file_upload_path(_file_upload_path), file_name(""), file_raw(""), file_with_header(_file_with_header) {
     processFileWithHeader();
     saveFile();
 }
@@ -38,7 +38,7 @@ void UploadFile::processFileWithHeader() {
 
 void UploadFile::saveFile() {
     ofstream f;
-    f.open(file_name.c_str());
+    f.open(string(file_upload_path + "/" + file_name).c_str());
     f << file_raw;
     f.close();
 }

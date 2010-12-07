@@ -58,6 +58,7 @@ int main(int argc, char**argv) {
     }
     int counter = 0;
     bool quit = false;
+    FileUploader file_uploader;
     while (!quit) {
         ++counter;
         cout << "Server is listening and waiting for accept..." << endl;
@@ -80,7 +81,7 @@ int main(int argc, char**argv) {
             sio.closeReadSocket();
             
             // Just for fun: Upload file
-            FileUploader f(lines_received);
+            file_uploader.upload(lines_received);
 
             if (quitRequested(lines_received)) {
                 cout << endl << endl;

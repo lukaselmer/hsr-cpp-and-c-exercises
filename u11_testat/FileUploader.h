@@ -8,10 +8,12 @@
 
 class FileUploader {
 public:
-    FileUploader(std::string request);
+    FileUploader();
     virtual ~FileUploader();
+    void upload(std::string request);
 private:
-    UploadFile file;
+    std::string file_upload_path;
+    //std::vector<UploadFile> uploadedFiles;
 };
 
 #endif	/* FILEUPLOADER_H */
