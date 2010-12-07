@@ -8,7 +8,7 @@ HttpRequest::HttpRequest(const SocketIO & _sio, const FileUploader & _file_uploa
 request(""), sio(_sio), file_uploader(_file_uploader), counter(_counter), response(""), normal_request(false) {
     request = sio.readlines();
     sio.closeReadSocket();
-    
+
     if (quitRequested()) return;
     file_uploader.upload(request, counter);
     if (!fileRequest()) normalRequest();
@@ -37,13 +37,14 @@ bool HttpRequest::fileRequest() {
 
 void HttpRequest::normalRequest() {
     stringstream ss1, ss2;
-    ss1 << "<html><head></head><body><h1>Hello <i>" << sio.getPeerInfo() << "</i></h1>" <<
+    ss1 << "<html><head></head><body><a href='/'>Reload</a><br/><h1>Hello <i>" << sio.getPeerInfo() << "</i></h1>" <<
             "<div>This is request <b>#" << counter << "</b>.</div>" <<
             "<div>This is your request:</div>" <<
             "<pre>" << filterFileUpload() << "</pre>" <<
-            "<form action=\"input_file.htm\" method=\"post\" enctype=\"multipart/form-data\">" <<
-            "File upload test: <input name=\"Datei\" type=\"file\" /><input type=\"submit\" />" <<
-            "</form>" << generateUploadedFilesList() << "</body></html>\r\n";
+            "<form action=\"/\" method=\"post\" enctype=\"multipart/form-data\">" <<
+            "File upload: <input name=\"Datei\" type=\"file\" /><input type=\"submit\" value=\"Upload!\" />" <<
+            "</form>" << "<br/>" << generateUploadedFilesList() << "<br/>" <<
+            "<a href='/quit'>Quit server</a><br/>" << "</body></html>\r\n";
     ss2 << getHeaders(ss1.str().length(), true) << ss1.str();
     normal_request = true;
     response = ss2.str();
