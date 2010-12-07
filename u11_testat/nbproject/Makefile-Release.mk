@@ -34,6 +34,7 @@ OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/UploadFile.o \
+	${OBJECTDIR}/HttpRequest.o \
 	${OBJECTDIR}/SocketIO.o \
 	${OBJECTDIR}/FileUploader.o \
 	${OBJECTDIR}/ServerSocket.o \
@@ -68,6 +69,11 @@ ${OBJECTDIR}/UploadFile.o: nbproject/Makefile-${CND_CONF}.mk UploadFile.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/UploadFile.o UploadFile.cpp
+
+${OBJECTDIR}/HttpRequest.o: nbproject/Makefile-${CND_CONF}.mk HttpRequest.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/HttpRequest.o HttpRequest.cpp
 
 ${OBJECTDIR}/SocketIO.o: nbproject/Makefile-${CND_CONF}.mk SocketIO.cpp 
 	${MKDIR} -p ${OBJECTDIR}

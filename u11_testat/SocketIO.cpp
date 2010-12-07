@@ -2,7 +2,7 @@
 
 using namespace std;
 
-SocketIO::SocketIO(int fd) : sock(fd), lines("") {
+SocketIO::SocketIO(int fd, int _buffer_size) : sock(fd), buffer(""), buffer_size(_buffer_size) {
 }
 
 SocketIO::~SocketIO() {
@@ -10,12 +10,14 @@ SocketIO::~SocketIO() {
 }
 
 string SocketIO::readlines() {
-    while (fillbuf());
-    return lines;
+    while (fill_buffer());
+    return buffer;
 }
 
-void SocketIO::writeN(const char *buf, int len) {
-    cout << endl << "Writing: " << write(sock, buf, len) << " chars of " << len << ": " << endl << "******" << endl << buf << endl << "******" << endl;
+void SocketIO::writeResponse(const string & response, bool normal_request) {
+    cout << endl << "Writing: " << write(sock, response.c_str(), response.length()) << " chars of " << response.length() << endl << "******" << endl;
+    cout << (normal_request ? response.c_str() : "[file transfer]");
+    cout << endl << "******" << endl;
 }
 
 void SocketIO::doClose() {
@@ -30,7 +32,7 @@ void SocketIO::closeReadSocket() {
     shutdown(sock, SHUT_RD);
 }
 
-string SocketIO::getPeerInfo() {
+const string SocketIO::getPeerInfo() {
     struct sockaddr_in peerInfo;
     socklen_t len = sizeof (peerInfo);
     if (getpeername(sock, (struct sockaddr*) &peerInfo, &len) != 0) {
@@ -42,11 +44,10 @@ string SocketIO::getPeerInfo() {
     return ss.str();
 }
 
-bool SocketIO::fillbuf() { // corresponds to streambuf::underflow()
-    int i = recv(sock, buf, BUF_SIZE, MSG_DONTWAIT);
-    if (i <= 0) {
-        return false;
-    }
-    lines += string(buf, buf + i);
+bool SocketIO::fill_buffer() {
+    char buf[buffer_size]; // a bit stupid way to mimick an istream
+    int received_count = recv(sock, buf, buffer_size, MSG_DONTWAIT);
+    if (received_count <= 0) return false;
+    buffer += string(buf, buf + received_count);
     return true;
 }

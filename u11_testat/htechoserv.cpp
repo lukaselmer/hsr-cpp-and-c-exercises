@@ -14,36 +14,9 @@
 #include "ServerSocket.h"
 #include "SocketIO.h"
 #include "FileUploader.h"
+#include "HttpRequest.h"
 
 using namespace std;
-
-string getHeaders(int len) {
-    stringstream ss;
-    ss << "HTTP/1.1 200 OK\n";
-    ss << "Server: LukesC++Server\n";
-    ss << "Content-Length: " << len << "\n";
-    ss << "Connection: close\n";
-    ss << "Content-Type: text/html\n";
-    ss << "\n";
-    return ss.str();
-}
-
-bool quitRequested(string request) {
-    return request.find("GET /quit HTTP/1.1\r\n", 0) == 0 || request.find("GET /quit HTTP/1.1\n", 0) == 0;
-}
-
-string generateResponse(string request, string clintinfo, int counter) {
-    stringstream ss1, ss2;
-    ss1 << "<html><head></head><body><h1>Hello <i>" << clintinfo << "</i></h1>" <<
-            "<div>This is request <b>#" << counter << "</b>.</div>" <<
-            "<div>This is your request:</div>" <<
-            "<pre>" << request << "</pre>" <<
-            "<form action=\"input_file.htm\" method=\"post\" enctype=\"multipart/form-data\">" <<
-            "File upload test: <input name=\"Datei\" type=\"file\" /><input type=\"submit\" />" <<
-            "</form>" << "</body></html>\n";
-    ss2 << getHeaders(ss1.str().length()) << ss1.str();
-    return ss2.str();
-}
 
 int main(int argc, char**argv) {
     if (argc < 2) {
@@ -57,9 +30,8 @@ int main(int argc, char**argv) {
         return 2;
     }
     int counter = 0;
-    bool quit = false;
     FileUploader file_uploader;
-    while (!quit) {
+    while (true) {
         ++counter;
         cout << "Server is listening and waiting for accept..." << endl;
 
@@ -77,26 +49,19 @@ int main(int argc, char**argv) {
             ss.doClose();
             SocketIO sio(clientfd);
             cout << "Connected to " << sio.getPeerInfo() << endl;
-            string lines_received = sio.readlines();
-            sio.closeReadSocket();
-            
-            // Just for fun: Upload file
-            file_uploader.upload(lines_received);
 
-            if (quitRequested(lines_received)) {
-                cout << endl << endl;
-                quit = true;
-            }
-            string reply = generateResponse(lines_received, sio.getPeerInfo(), counter);
-            //sleep(5);
-            sio.writeN(reply.c_str(), reply.length());
+            HttpRequest request(sio, file_uploader, counter);
+
+            sio.writeResponse(request.getResponse(), request.wasNormalRequest());
             sio.doClose();
 
             cout << "*** Request done ***" << endl << endl;
-            if (quit) {
+
+            if (request.quitRequested()) {
+                cout << endl << endl;
                 cout << "******************************" << endl;
                 cout << "* SERVER IS SHUTTING DOWN!!! *" << endl;
-                cout << "******************************" << endl << endl;
+                cout << "******************************" << endl << endl << endl;
                 kill(parentId, SIGINT);
             }
             exit(0);

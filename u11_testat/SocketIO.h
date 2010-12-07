@@ -15,20 +15,18 @@
 
 class SocketIO {
 public:
-    const static int BUF_SIZE = 1024;
-
-    SocketIO(int fd);
+    SocketIO(int fd, int buffer_size = 1024);
     virtual ~SocketIO();
     std::string readlines();
-    void writeN(const char *buf, int len);
+    void writeResponse(const std::string & response, bool normal_request);
     void doClose();
-    std::string getPeerInfo();
+    const std::string getPeerInfo();
     void closeReadSocket();
 private:
     int sock; // socket file descriptor
-    char buf[BUF_SIZE]; // a bit stupid way to mimick an istream
-    std::string lines;
-    bool fillbuf();
+    int buffer_size;
+    std::string buffer;
+    bool fill_buffer();
 };
 
 #endif	/* SOCKETIO_H */

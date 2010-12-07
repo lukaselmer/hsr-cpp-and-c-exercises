@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <poll.h>
+#include <string.h>
 
 class ServerSocket {
 public:

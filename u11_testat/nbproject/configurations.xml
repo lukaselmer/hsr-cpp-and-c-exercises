@@ -6,8 +6,10 @@
                    projectFiles="true"
                    kind="SOURCE_LOGICAL_FOLDER">
       <itemPath>FileUploader.h</itemPath>
+      <itemPath>HttpRequest.h</itemPath>
       <itemPath>ServerSocket.h</itemPath>
       <itemPath>SocketIO.h</itemPath>
+      <itemPath>UploadFile.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -19,10 +21,10 @@
                    projectFiles="true"
                    kind="SOURCE_LOGICAL_FOLDER">
       <itemPath>FileUploader.cpp</itemPath>
+      <itemPath>HttpRequest.cpp</itemPath>
       <itemPath>ServerSocket.cpp</itemPath>
       <itemPath>SocketIO.cpp</itemPath>
       <itemPath>UploadFile.cpp</itemPath>
-      <itemPath>UploadFile.h</itemPath>
       <itemPath>htechoserv.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

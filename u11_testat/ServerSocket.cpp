@@ -1,5 +1,3 @@
-#include <string.h>
-
 #include "ServerSocket.h"
 
 using namespace std;
