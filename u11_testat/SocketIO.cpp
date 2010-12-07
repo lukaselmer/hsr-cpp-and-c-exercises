@@ -2,7 +2,7 @@
 
 using namespace std;
 
-SocketIO::SocketIO(int fd) : sock(fd), lines(""), /*writePtr(buf), readPtr(buf), endPtr(buf + sizeof (buf)),*/ eof_reached(true) {
+SocketIO::SocketIO(int fd) : sock(fd), lines("") {
 }
 
 SocketIO::~SocketIO() {
@@ -45,11 +45,8 @@ string SocketIO::getPeerInfo() {
 bool SocketIO::fillbuf() { // corresponds to streambuf::underflow()
     int i = recv(sock, buf, BUF_SIZE, MSG_DONTWAIT);
     if (i <= 0) {
-        eof_reached = true;
         return false;
     }
-    eof_reached = false;
-    string new_lines(buf, buf + i);
-    lines += new_lines;
+    lines += string(buf, buf + i);
     return true;
 }

@@ -13,6 +13,7 @@
 
 #include "ServerSocket.h"
 #include "SocketIO.h"
+#include "FileUploader.h"
 
 using namespace std;
 
@@ -77,6 +78,10 @@ int main(int argc, char**argv) {
             cout << "Connected to " << sio.getPeerInfo() << endl;
             string lines_received = sio.readlines();
             sio.closeReadSocket();
+            
+            // Just for fun: Upload file
+            FileUploader f(lines_received);
+
             if (quitRequested(lines_received)) {
                 cout << endl << endl;
                 quit = true;
