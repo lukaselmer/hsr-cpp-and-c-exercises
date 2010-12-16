@@ -1,0 +1,6 @@
+Datagram.o: Datagram.cpp Datagram.h UDPSocket.h
+UDPSocket.o: UDPSocket.cpp UDPSocket.h Datagram.h
+udpdemo.o: udpdemo.cpp UDPSocket.h Datagram.h
+udpchatserver.o: udpchatserver.cpp UDPSocket.h Datagram.h
+chatclient.o: chatclient.cpp UDPSocket.h Datagram.h
+udpchatclient.o: udpchatclient.cpp UDPSocket.h Datagram.h
