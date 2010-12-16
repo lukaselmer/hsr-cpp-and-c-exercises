@@ -2,8 +2,8 @@ SRC= Datagram.cpp UDPSocket.cpp udpdemo.cpp udpchatserver.cpp chatclient.cpp udp
 OBJECTS= Datagram.o UDPSocket.o 
 
 #only udpdemo is complete code. all others need your completion
-all: udpdemo
-#all: udpdemo udpchatserver udpchatclient 
+#all: udpdemo
+all: udpdemo udpchatserver udpchatclient 
 
 udpdemo:  $(OBJECTS) udpdemo.o
 	g++ -o $@ $+ 
@@ -24,7 +24,7 @@ clean:
 	    chatclient.o chatclient chatclient.exe 2>/dev/null
 
 depend: $(SRC) 
-#	makedepend $(SRC)  2>/dev/null # requires #DO NOT DELETE comment 
+	makedepend $(SRC)  2>/dev/null # requires #DO NOT DELETE comment
 	g++ -MM $(SRC) >./makedepends.incl
 
 dist: $(SRC) Makefile makedepends.incl

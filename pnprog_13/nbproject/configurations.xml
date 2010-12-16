@@ -19,7 +19,6 @@
                    kind="SOURCE_LOGICAL_FOLDER">
       <itemPath>Datagram.cpp</itemPath>
       <itemPath>UDPSocket.cpp</itemPath>
-      <itemPath>main.cpp</itemPath>
       <itemPath>udpchatclient.cpp</itemPath>
       <itemPath>udpchatserver.cpp</itemPath>
       <itemPath>udpdemo.cpp</itemPath>

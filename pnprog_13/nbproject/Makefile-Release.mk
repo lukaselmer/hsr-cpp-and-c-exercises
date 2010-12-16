@@ -34,7 +34,6 @@ OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/UDPSocket.o \
-	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/udpchatserver.o \
 	${OBJECTDIR}/Datagram.o \
 	${OBJECTDIR}/udpchatclient.o \
@@ -69,11 +68,6 @@ ${OBJECTDIR}/UDPSocket.o: nbproject/Makefile-${CND_CONF}.mk UDPSocket.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/UDPSocket.o UDPSocket.cpp
-
-${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/udpchatserver.o: nbproject/Makefile-${CND_CONF}.mk udpchatserver.cpp 
 	${MKDIR} -p ${OBJECTDIR}
